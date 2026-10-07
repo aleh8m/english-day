@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>B1 Words 📚 - English Language Day</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:linear-gradient(#bfe6ff,#fff7d6);min-height:100vh;color:#23406b;padding-bottom:90px}
+h1{text-align:center;margin:20px 10px 4px;font-size:1.7rem}
+p.sub{text-align:center;margin:0 0 12px}
+#sets{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:8px 12px}
+#sets button{border:0;border-radius:20px;padding:8px 14px;background:#fff;color:#23406b;font-weight:700;cursor:pointer;box-shadow:0 2px 5px #0002}
+#sets button.on{background:#ff7a59;color:#fff}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:14px;max-width:1000px;margin:auto}
+.card{perspective:800px;height:130px;cursor:pointer}
+.in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.f,.b{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px;box-shadow:0 4px 10px #0003}
+.f{background:#fff;font-size:1.25rem;font-weight:800;color:#d62839}
+.b{background:#23406b;color:#fff;transform:rotateY(180deg);font-size:.82rem;gap:5px}
+.b .ar{font-size:1.2rem;font-weight:800;color:#ffd24d}
+.b .ex{font-style:italic}
+.sp{position:absolute;top:6px;right:8px;font-size:1rem;background:none;border:0;cursor:pointer}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#fff;padding:10px 4px calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -2px 8px #0003;font-size:.8rem}
+nav a{color:#23406b;text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+<h1>📚 B1 Words</h1>
+<p class="sub">Tap a card to flip it ✨ اضغط على الكلمة</p>
+<div id="sets"></div>
+<div id="grid"></div>
+<nav><a href="index.html">🏠 Home</a><a href="synonyms.html">🤝 Synonyms</a><a href="opposites.html">⚡ Opposites</a><a href="verbs.html">🚀 Verbs</a><a href="words.html">📚 Words</a></nav>
+<script>
+const DATA=`Brief|مختصر|The meeting was very brief.
+Broad|واسع|He has broad shoulders and is very tall.
+Budget|ميزانية|We are traveling on a tight budget.
+Calm|هادئ|Stay calm and don't panic.
+Campaign|حملة|They started a campaign to save the park.
+Capacity|سعة/قدرة|The stadium has a capacity of 50,000 people.
+Case|حالة|In that case, we should leave early.
+Category|فئة|These books are in the same category.
+Cause|يسبب|Smoking can cause many health problems.
+Certain|متأكد/معين|I am certain that I locked the door.
+Chain|سلسلة|There is a chain of supermarkets in the city.
+Challenge|تحدي|It's a big challenge, but we can do it.
+Chapter|فصل (كتاب)|I'm reading the last chapter of the book.
+Charity|جمعية خيرية|She gives a lot of money to charity.
+Check|يفحص|Let me check the schedule for you.
+Cheerful|مبهج|He is always cheerful in the morning.
+##
+Favorite|مفضل|What is your favorite color?
+Flexible|مرن|My working hours are quite flexible.
+Focus|يركز|I need to focus on my studies.
+Foreign|أجنبي|I like watching foreign films.
+General|عام|This is a general rule for everyone.
+Generous|كريم|It was very generous of you to pay.
+Goal|هدف|My main goal is to lose weight.
+Habit|عادة|Smoking is a bad habit.
+Healthy|صحي|I try to lead a healthy lifestyle.
+Imagine|يتخيل|Can you imagine living on Mars?
+Improve|يحسن|I want to improve my English.
+Include|يتضمن|The price includes breakfast.
+Independent|مستقل|She is a very independent woman.
+Influence|تأثير|My teacher had a big influence on me.
+Information|معلومات|I need more information about the trip.
+Knowledge|معرفة|He has a wide knowledge of history.
+##
+Daily|يومي|Exercise should be part of your daily routine.
+Damage|ضرر/يدمر|The storm caused a lot of damage.
+Deadline|موعد نهائي|The deadline for the project is Friday.
+Debt|دَيْن|He finally paid off all his debts.
+Decade|عقد (10 سنوات)|This technology changed a lot in the last decade.
+Defeat|يهزم|Our team managed to defeat the champions.
+Definite|محدد/مؤكد|I need a definite answer by tomorrow.
+Delay|تأجيل/تأخير|The flight was delayed due to fog.
+##
+Ancient|قديم جداً|They visited an ancient city in Italy.
+Anxious|قلق|She felt anxious about the interview.
+Appearance|مظهر|Don't judge people by their appearance.
+Appointment|موعد|I have a dentist appointment at 5 PM.
+Area|منطقة|This area is famous for its parks.
+Argue|يجادل|My parents never argue about money.
+Arrange|يرتب|I'll arrange a meeting for next week.
+Article|مقال|I read an interesting article today.
+Assistant|مساعد|The shop assistant was very helpful.
+Avoid|يتجنب|You should avoid eating too much sugar.
+Background|خلفية|He has a background in computer science.
+Believe|يعتقد/يؤمن|I believe that you can do it.
+Benefit|فائدة|Exercise has many benefits for health.
+Board|لوحة/مجلس|Please write your name on the board.
+Borrow|يستعير|Can I borrow your pen for a second?
+Brave|شجاع|It was brave of him to save the cat.
+##
+Manage|يدير|How do you manage your time?
+Necessary|ضروري|Is it necessary to bring a coat?
+Opportunity|فرصة|Don't miss this opportunity.
+Realize|يدرك|I didn't realize how late it was.
+Actually|في الواقع|I actually enjoyed the long meeting.
+Admiration|إعجاب|I have great admiration for her courage.
+Adventure|مغامرة|Hiking in the mountains was a real adventure.
+Advertise|يعلن|They advertise their products on social media.
+Affect|يؤثر على|The cold weather will affect the plants.
+Agreement|اتفاق|We have finally reached an agreement.
+Alternative|بديل|Is there an alternative to this plan?
+Ambition|طموح|Her ambition is to become a famous lawyer.
+Announce|يعلن (بشكل رسمي)|The company will announce the winner soon.
+Annoying|مزعج|It's really annoying when the Wi-Fi is slow.
+Appropriate|مناسب|Please wear appropriate clothes for the interview.
+Arrange|يرتب|I'll arrange the flowers in the vase.
+##
+Ability|قدرة|He has the ability to solve complex problems.
+Abroad|خارج البلاد|I would love to study abroad next year.
+Accept|يقبل|They decided to accept our offer.
+Accident|حادث|It was just a minor car accident.
+According to|بناءً على|According to the news, it will rain today.
+Achieve|يحقق|You can achieve anything with hard work.
+Active|نشيط|My grandfather is still very active.
+Actually|في الحقيقة|Actually, I've never been to Paris.
+Admit|يعترف|He refused to admit his mistake.
+Advantage|ميزة|One advantage of living here is the view.
+Advice|نصيحة|Can you give me some advice about work?
+Afford|يتحمل تكلفة|I can't afford to buy a new phone now.
+Agree|يوافق|I totally agree with your opinion.
+Aim|هدف|My aim is to become a doctor.
+Amazing|مذهل|The view from the top was amazing.
+Amount|كمية|We need a large amount of water.
+##
+Competition|مسابقة|She won first prize in the competition.
+Complaint|شكوى|I want to make a complaint about the food.
+Complex|معقد|The human brain is very complex.
+Concentrate|يركز|It's hard to concentrate with all this noise.
+Conclusion|خاتمة/استنتاج|What is the conclusion of your report?
+Confident|واثق|I am confident about my future.
+Confusion|ارتباك|There was some confusion about the time.
+Connect|يربط|This road connects the two cities.
+Consequence|عاقبة/نتيجة|You must accept the consequences.
+Considerable|ملحوظ/كبير|He made a considerable amount of money.
+Construction|بناء|The road is closed due to construction.
+Consumer|مستهلك|Consumers are buying more online now.
+Contact|اتصال/تواصل|Please keep in contact with us.
+Contrast|تباين|There is a sharp contrast between them.
+Contribution|مساهمة|Thank you for your contribution to the team.
+Control|سيطرة|He lost control of the car on the ice.
+##
+Choice|خيار|You have no choice but to wait.
+Circumstance|ظرف|Under no circumstances should you open this.
+Citizen|مواطن|Every citizen has the right to vote.
+Claim|يدعي|He claims that he met the president.
+Classic|كلاسيكي|"Hamlet" is a classic play by Shakespeare.
+Clear|واضح|The instructions were very clear.
+Climate|مناخ|The climate is changing very fast.
+Clue|دليل/خيط|The police have no clues about the thief.
+Colleague|زميل عمل|I'm going to lunch with a colleague.
+Collection|مجموعة|He has a large collection of stamps.
+Comfortable|مريح|These shoes are very comfortable.
+Commercial|تجاري|This is a commercial area with many shops.
+Commitment|التزام|Marriage is a big commitment.
+Communication|تواصل|Good communication is vital in a team.
+Community|مجتمع|We live in a very friendly community.
+Comparison|مقارنة|There is no comparison between the two.
+##
+Distance|مسافة|What is the distance to the airport?
+Education|تعليم|Education is the key to success.
+Effort|مجهود|He put a lot of effort into this project.
+Encourage|يشجع|My parents encourage me to study.
+Enjoyable|ممتع|We had a very enjoyable evening.
+Enormous|ضخم|The elephant is an enormous animal.
+Environment|بيئة|We must protect the environment.
+Equipment|معدات|You need special equipment for diving.
+Essential|ضروري|Water is essential for life.
+Event|حدث|The wedding was a great event.
+Exactly|بالضبط|That is exactly what I meant.
+Exchange|يتبادل|Can we exchange phone numbers?
+Experience|خبرة|Do you have any experience in sales?
+Explain|يشرح|Can you explain this rule again?
+Express|يعبر عن|It's hard to express my feelings.
+Fashionable|مساير للموضة|She always wears fashionable clothes.
+##
+Convenient|مريح/مناسب|Is 10:00 AM convenient for you?
+Convince|يقنع|It's hard to convince him he is wrong.
+Correct|يصحح/صحيح|Please correct any mistakes you find.
+Costume|زي|I need a costume for the party.
+Count|يعد|Can you count from one to ten?
+Courage|شجاعة|It takes courage to speak the truth.
+Creative|مبدع|Children are very creative when they play.
+Crew|طاقم|The ship's crew was very professional.
+Crisis|أزمة|The country is facing an economic crisis.
+Critical|نقدي/حرج|The patient is in critical condition.
+Crucial|حاسم/مصيري|This is a crucial decision for your career.
+Cruel|قاسي|Don't be cruel to animals.
+Cultural|ثقافي|There are many cultural differences here.
+Currency|عملة|What is the local currency in Japan?
+Current|حالي|My current job is very stressful.
+Custom|عادة/عرف|It is a local custom to shake hands.
+##
+Contact|يتواصل|Feel free to contact me anytime.
+Contain|يحتوي على|This box contains old photos.
+Creative|مبدع|She is a very creative artist.
+Crowded|مزدحم|The train was very crowded this morning.
+Culture|ثقافة|I enjoy learning about different cultures.
+Decision|قرار|It was a very difficult decision to make.
+Degree|درجة علمية|He has a degree in physics.
+Delicious|لذيذ|This pizza is absolutely delicious.
+Depend on|يعتمد على|Our trip will depend on the weather.
+Describe|يصف|Can you describe the man you saw?
+Develop|يطور|They want to develop new software.
+Difference|اختلاف|Is there a difference between these two?
+Direction|اتجاه|Which direction should we go?
+Disappointed|خائب الأمل|I was disappointed with the movie.
+Discover|يكتشف|Scientists discovered a new planet.
+Discuss|يناقش|We need to discuss the plan.
+##
+Artificial|اصطناعي|This juice contains no artificial colors.
+Aspect|جانب/ناحية|Every aspect of the project was successful.
+Attitude|مواقف/سلوك|He has a very positive attitude toward life.
+Attract|يجذب|The museum attracts many tourists.
+Audience|جمهور|The audience clapped after the performance.
+Average|متوسط|The average temperature here is 25°C.
+Aware|مدرك/واعٍ|Are you aware of the new safety rules?
+Awful|فظيع|The weather yesterday was absolutely awful.
+Balance|توازن|It's important to keep a balance between work and life.
+Ban|يمنع|The city plans to ban cars from the center.
+Basic|أساسي|Food and water are basic needs.
+Behavior|سلوك|The child's behavior has improved a lot.
+Belong|ينتمي إلى|Does this umbrella belong to you?
+Blame|يلوم|Don't blame me for your mistakes.
+Block|يحجب/يسد|A big truck is blocking the road.
+Blood|دم|He fainted at the sight of blood.
+##
+Brilliant|رائع/ذكي|That is a brilliant idea!
+Business|عمل/تجارة|She wants to start her own business.
+Candidate|مرشح|There are three candidates for the job.
+Career|مسيرة مهنية|He wants a career in journalism.
+Celebrate|يحتفل|We will celebrate your graduation.
+Century|قرن|This castle was built in the 15th century.
+Challenge|تحدي|Learning a new language is a big challenge.
+Character|شخصية|I like the main character in this book.
+Choose|يختار|You have to choose between these two.
+Common|شائع|It's common to feel nervous before a test.
+Compare|يقارن|Don't compare yourself to others.
+Complain|يشكو|He always complains about the weather.
+Condition|حالة|The car is in very good condition.
+Confidence|ثقة|Success gave her more confidence.
+Confirm|يؤكد|Please confirm your booking by email.
+Consider|يفكر في/يعتبر|We are considering moving to a new house.`;
+const sets=DATA.split("\n##\n").map(s=>s.split("\n").map(l=>l.split("|")));
+const setsEl=document.getElementById("sets"),grid=document.getElementById("grid");
+function show(i){
+  [...setsEl.children].forEach((b,j)=>b.classList.toggle("on",i===j));
+  grid.innerHTML="";
+  sets[i].forEach(([w,ar,ex])=>{
+    const c=document.createElement("div");c.className="card";
+    c.innerHTML='<div class="in"><div class="f"></div><div class="b"><div class="ar" dir="auto"></div><div class="ex"></div></div></div>';
+    c.querySelector(".f").textContent=w;
+    c.querySelector(".ar").textContent=ar;
+    c.querySelector(".ex").textContent=ex;
+    const sp=document.createElement("button");sp.className="sp";sp.textContent="🔊";
+    sp.onclick=e=>{e.stopPropagation();try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w+". "+ex);u.lang="en-US";speechSynthesis.speak(u)}catch(_){}};
+    c.querySelector(".b").appendChild(sp);
+    c.onclick=()=>c.classList.toggle("flip");
+    grid.appendChild(c);
+  });
+}
+sets.forEach((_,i)=>{const b=document.createElement("button");b.textContent="Set "+(i+1);b.onclick=()=>show(i);setsEl.appendChild(b)});
+show(0);
+</script>
+</body>
+</html>
