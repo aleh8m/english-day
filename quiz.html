@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiz Time 🏆 - English Language Day</title>
+<style>
+:root{--bl:#1e4fa8;--sky:#cfe6f7;--yl:#fbe97a;--pk:#e8707a;--bg:#eaf4fc;--tx:#12307a;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}}
+:root[data-theme="dark"]{--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Comic Sans MS","Trebuchet MS",system-ui,sans-serif;text-align:center}
+header{background:linear-gradient(#7fc0ec,var(--sky));padding:12px 10px 6px;position:relative;overflow:hidden}
+h1{display:inline-block;background:var(--yl);color:#12307a;margin:4px;padding:8px 16px;border-radius:14px;font-size:1.15rem;transform:rotate(-1.5deg)}
+.sub{color:var(--bl);font-weight:bold;margin:3px;font-size:.9rem}
+.cloud{position:absolute;font-size:2rem;opacity:.8;animation:fly 18s linear infinite}
+@keyframes fly{from{left:-10%}to{left:110%}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes boom{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}25%{transform:translate(-50%,-50%) scale(1.2);opacity:1}80%{transform:translate(-50%,-60%) scale(1);opacity:1}100%{transform:translate(-50%,-90%) scale(1);opacity:0}}
+button{font:inherit;cursor:pointer;border:0}
+nav{display:flex;gap:6px;padding:8px 10px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;justify-content:space-between;align-items:center}
+nav a,nav button{background:var(--pk);color:#fff;padding:8px 12px;border-radius:12px;font-weight:bold;font-size:.85rem;text-decoration:none}
+nav button{background:var(--bl)}
+.ban{display:inline-block;background:var(--bl);color:#fff;padding:8px 20px;border-radius:12px;font-size:1.2rem;margin:8px 0}
+.mas{font-size:3.4rem;display:block;animation:bob 2s ease-in-out infinite}
+.home{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px;max-width:520px;margin:auto}
+.hc{border-radius:22px;padding:14px 8px;color:#fff;cursor:pointer;box-shadow:0 5px 0 #0003;animation:pop .5s backwards,bob 3s ease-in-out infinite;transition:transform .15s}
+.hc:active{transform:scale(.93)}.hc .ic{font-size:2.2rem;display:block}.hc b{font-size:1.05rem;display:block}.hc small{font-size:.78rem;opacity:.95}
+.c0{grid-column:1/-1;background:#8e44ad}.c1{background:var(--bl)}.c2{background:var(--pk)}.c3{background:#2fa36b;animation-delay:.1s,.4s}.c4{background:#12307a;border:3px solid var(--yl);animation-delay:.2s,.8s}.c5{background:#e08a1e;animation-delay:.3s,.6s}
+.box{max-width:480px;margin:8px auto;padding:0 12px}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:bold;margin:6px 0}
+.bar{height:14px;background:var(--sky);border-radius:10px;overflow:hidden;border:2px solid var(--bl)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd24d,#ff7a59);transition:width .5s;border-radius:10px}
+#qc{background:var(--card);border:3px dashed var(--bl);border-radius:18px;padding:14px;margin-top:10px;animation:pop .4s}
+.chip{display:inline-block;background:var(--yl);color:#12307a;border-radius:12px;padding:2px 12px;font-size:.8rem;font-weight:bold}
+.q{font-size:1.3rem;font-weight:bold;margin:10px 0 2px;line-height:1.5}
+.qa{font-size:1.05rem;color:var(--pk);font-weight:bold;margin:0 0 6px}
+.sent{font-size:1.25rem;line-height:1.7}
+.opt{display:block;width:100%;margin:8px 0;padding:12px;border-radius:14px;background:var(--sky);color:var(--tx);border:3px solid var(--bl);font-size:1.1rem;font-weight:bold;transition:transform .15s}
+.opt:active{transform:scale(.96)}
+.opt.ok{background:#7be08a!important;color:#0b3d1c!important;border-color:#2fa36b;animation:bob .6s}
+.opt.no{background:#ffc2c2!important;color:#5a1010!important;border-color:var(--pk);animation:shake .5s}
+#fb{min-height:60px;margin-top:8px;font-weight:bold}
+.good{color:#1c8a3d;font-size:1.25rem}.try{color:#c0392b;font-size:1.1rem}
+.tip{background:var(--yl);color:#12307a;border-radius:12px;padding:6px 10px;margin-top:6px;font-size:.9rem;display:inline-block}
+.go{background:var(--bl);color:#fff;padding:12px 24px;border-radius:20px;font-weight:bold;font-size:1.1rem;margin:10px 4px 4px;box-shadow:0 4px 0 #0003}
+.go.yl{background:var(--yl);color:#12307a}
+.big{font-size:3.2rem;animation:bob 1s infinite}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%}
+#pr{position:fixed;left:50%;top:38%;z-index:60;font-size:2.1rem;font-weight:bold;color:#fff;text-shadow:0 3px 0 #1e4fa8,0 0 12px #ffd24d;pointer-events:none;opacity:0;white-space:nowrap}
+#pr.on{animation:boom 1.5s ease-out}
+footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:bold}
+</style></head><body>
+<canvas id="fx"></canvas><div id="pr"></div>
+<header id="hd"><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
+<h1>Quiz Time 🏆</h1>
+<p class="sub">Show what you know! أثبت أنك بطل!</p></header>
+<nav><a href="index.html">🏠 Home</a><button id="rs">🔄 Menu</button></nav>
+<main class="box" id="m"></main>
+<footer>Practice ⭐ Learn ⭐ Improve</footer>
+<script>
+const DATA=`Brief|مختصر|The meeting was very brief.
+Broad|واسع|He has broad shoulders and is very tall.
+Budget|ميزانية|We are traveling on a tight budget.
+Calm|هادئ|Stay calm and don't panic.
+Campaign|حملة|They started a campaign to save the park.
+Capacity|سعة/قدرة|The stadium has a capacity of 50,000 people.
+Case|حالة|In that case, we should leave early.
+Category|فئة|These books are in the same category.
+Cause|يسبب|Smoking can cause many health problems.
+Certain|متأكد/معين|I am certain that I locked the door.
+Chain|سلسلة|There is a chain of supermarkets in the city.
+Challenge|تحدي|It's a big challenge, but we can do it.
+Chapter|فصل (كتاب)|I'm reading the last chapter of the book.
+Charity|جمعية خيرية|She gives a lot of money to charity.
+Check|يفحص|Let me check the schedule for you.
+Cheerful|مبهج|He is always cheerful in the morning.
+##
+Favorite|مفضل|What is your favorite color?
+Flexible|مرن|My working hours are quite flexible.
+Focus|يركز|I need to focus on my studies.
+Foreign|أجنبي|I like watching foreign films.
+General|عام|This is a general rule for everyone.
+Generous|كريم|It was very generous of you to pay.
+Goal|هدف|My main goal is to lose weight.
+Habit|عادة|Smoking is a bad habit.
+Healthy|صحي|I try to lead a healthy lifestyle.
+Imagine|يتخيل|Can you imagine living on Mars?
+Improve|يحسن|I want to improve my English.
+Include|يتضمن|The price includes breakfast.
+Independent|مستقل|She is a very independent woman.
+Influence|تأثير|My teacher had a big influence on me.
+Information|معلومات|I need more information about the trip.
+Knowledge|معرفة|He has a wide knowledge of history.
+##
+Daily|يومي|Exercise should be part of your daily routine.
+Damage|ضرر/يدمر|The storm caused a lot of damage.
+Deadline|موعد نهائي|The deadline for the project is Friday.
+Debt|دَيْن|He finally paid off all his debts.
+Decade|عقد (10 سنوات)|This technology changed a lot in the last decade.
+Defeat|يهزم|Our team managed to defeat the champions.
+Definite|محدد/مؤكد|I need a definite answer by tomorrow.
+Delay|تأجيل/تأخير|The flight was delayed due to fog.
+##
+Ancient|قديم جداً|They visited an ancient city in Italy.
+Anxious|قلق|She felt anxious about the interview.
+Appearance|مظهر|Don't judge people by their appearance.
+Appointment|موعد|I have a dentist appointment at 5 PM.
+Area|منطقة|This area is famous for its parks.
+Argue|يجادل|My parents never argue about money.
+Arrange|يرتب|I'll arrange a meeting for next week.
+Article|مقال|I read an interesting article today.
+Assistant|مساعد|The shop assistant was very helpful.
+Avoid|يتجنب|You should avoid eating too much sugar.
+Background|خلفية|He has a background in computer science.
+Believe|يعتقد/يؤمن|I believe that you can do it.
+Benefit|فائدة|Exercise has many benefits for health.
+Board|لوحة/مجلس|Please write your name on the board.
+Borrow|يستعير|Can I borrow your pen for a second?
+Brave|شجاع|It was brave of him to save the cat.
+##
+Manage|يدير|How do you manage your time?
+Necessary|ضروري|Is it necessary to bring a coat?
+Opportunity|فرصة|Don't miss this opportunity.
+Realize|يدرك|I didn't realize how late it was.
+Actually|في الواقع|I actually enjoyed the long meeting.
+Admiration|إعجاب|I have great admiration for her courage.
+Adventure|مغامرة|Hiking in the mountains was a real adventure.
+Advertise|يعلن|They advertise their products on social media.
+Affect|يؤثر على|The cold weather will affect the plants.
+Agreement|اتفاق|We have finally reached an agreement.
+Alternative|بديل|Is there an alternative to this plan?
+Ambition|طموح|Her ambition is to become a famous lawyer.
+Announce|يعلن (بشكل رسمي)|The company will announce the winner soon.
+Annoying|مزعج|It's really annoying when the Wi-Fi is slow.
+Appropriate|مناسب|Please wear appropriate clothes for the interview.
+Arrange|يرتب|I'll arrange the flowers in the vase.
+##
+Ability|قدرة|He has the ability to solve complex problems.
+Abroad|خارج البلاد|I would love to study abroad next year.
+Accept|يقبل|They decided to accept our offer.
+Accident|حادث|It was just a minor car accident.
+According to|بناءً على|According to the news, it will rain today.
+Achieve|يحقق|You can achieve anything with hard work.
+Active|نشيط|My grandfather is still very active.
+Actually|في الحقيقة|Actually, I've never been to Paris.
+Admit|يعترف|He refused to admit his mistake.
+Advantage|ميزة|One advantage of living here is the view.
+Advice|نصيحة|Can you give me some advice about work?
+Afford|يتحمل تكلفة|I can't afford to buy a new phone now.
+Agree|يوافق|I totally agree with your opinion.
+Aim|هدف|My aim is to become a doctor.
+Amazing|مذهل|The view from the top was amazing.
+Amount|كمية|We need a large amount of water.
+##
+Competition|مسابقة|She won first prize in the competition.
+Complaint|شكوى|I want to make a complaint about the food.
+Complex|معقد|The human brain is very complex.
+Concentrate|يركز|It's hard to concentrate with all this noise.
+Conclusion|خاتمة/استنتاج|What is the conclusion of your report?
+Confident|واثق|I am confident about my future.
+Confusion|ارتباك|There was some confusion about the time.
+Connect|يربط|This road connects the two cities.
+Consequence|عاقبة/نتيجة|You must accept the consequences.
+Considerable|ملحوظ/كبير|He made a considerable amount of money.
+Construction|بناء|The road is closed due to construction.
+Consumer|مستهلك|Consumers are buying more online now.
+Contact|اتصال/تواصل|Please keep in contact with us.
+Contrast|تباين|There is a sharp contrast between them.
+Contribution|مساهمة|Thank you for your contribution to the team.
+Control|سيطرة|He lost control of the car on the ice.
+##
+Choice|خيار|You have no choice but to wait.
+Circumstance|ظرف|Under no circumstances should you open this.
+Citizen|مواطن|Every citizen has the right to vote.
+Claim|يدعي|He claims that he met the president.
+Classic|كلاسيكي|"Hamlet" is a classic play by Shakespeare.
+Clear|واضح|The instructions were very clear.
+Climate|مناخ|The climate is changing very fast.
+Clue|دليل/خيط|The police have no clues about the thief.
+Colleague|زميل عمل|I'm going to lunch with a colleague.
+Collection|مجموعة|He has a large collection of stamps.
+Comfortable|مريح|These shoes are very comfortable.
+Commercial|تجاري|This is a commercial area with many shops.
+Commitment|التزام|Marriage is a big commitment.
+Communication|تواصل|Good communication is vital in a team.
+Community|مجتمع|We live in a very friendly community.
+Comparison|مقارنة|There is no comparison between the two.
+##
+Distance|مسافة|What is the distance to the airport?
+Education|تعليم|Education is the key to success.
+Effort|مجهود|He put a lot of effort into this project.
+Encourage|يشجع|My parents encourage me to study.
+Enjoyable|ممتع|We had a very enjoyable evening.
+Enormous|ضخم|The elephant is an enormous animal.
+Environment|بيئة|We must protect the environment.
+Equipment|معدات|You need special equipment for diving.
+Essential|ضروري|Water is essential for life.
+Event|حدث|The wedding was a great event.
+Exactly|بالضبط|That is exactly what I meant.
+Exchange|يتبادل|Can we exchange phone numbers?
+Experience|خبرة|Do you have any experience in sales?
+Explain|يشرح|Can you explain this rule again?
+Express|يعبر عن|It's hard to express my feelings.
+Fashionable|مساير للموضة|She always wears fashionable clothes.
+##
+Convenient|مريح/مناسب|Is 10:00 AM convenient for you?
+Convince|يقنع|It's hard to convince him he is wrong.
+Correct|يصحح/صحيح|Please correct any mistakes you find.
+Costume|زي|I need a costume for the party.
+Count|يعد|Can you count from one to ten?
+Courage|شجاعة|It takes courage to speak the truth.
+Creative|مبدع|Children are very creative when they play.
+Crew|طاقم|The ship's crew was very professional.
+Crisis|أزمة|The country is facing an economic crisis.
+Critical|نقدي/حرج|The patient is in critical condition.
+Crucial|حاسم/مصيري|This is a crucial decision for your career.
+Cruel|قاسي|Don't be cruel to animals.
+Cultural|ثقافي|There are many cultural differences here.
+Currency|عملة|What is the local currency in Japan?
+Current|حالي|My current job is very stressful.
+Custom|عادة/عرف|It is a local custom to shake hands.
+##
+Contact|يتواصل|Feel free to contact me anytime.
+Contain|يحتوي على|This box contains old photos.
+Creative|مبدع|She is a very creative artist.
+Crowded|مزدحم|The train was very crowded this morning.
+Culture|ثقافة|I enjoy learning about different cultures.
+Decision|قرار|It was a very difficult decision to make.
+Degree|درجة علمية|He has a degree in physics.
+Delicious|لذيذ|This pizza is absolutely delicious.
+Depend on|يعتمد على|Our trip will depend on the weather.
+Describe|يصف|Can you describe the man you saw?
+Develop|يطور|They want to develop new software.
+Difference|اختلاف|Is there a difference between these two?
+Direction|اتجاه|Which direction should we go?
+Disappointed|خائب الأمل|I was disappointed with the movie.
+Discover|يكتشف|Scientists discovered a new planet.
+Discuss|يناقش|We need to discuss the plan.
+##
+Artificial|اصطناعي|This juice contains no artificial colors.
+Aspect|جانب/ناحية|Every aspect of the project was successful.
+Attitude|مواقف/سلوك|He has a very positive attitude toward life.
+Attract|يجذب|The museum attracts many tourists.
+Audience|جمهور|The audience clapped after the performance.
+Average|متوسط|The average temperature here is 25°C.
+Aware|مدرك/واعٍ|Are you aware of the new safety rules?
+Awful|فظيع|The weather yesterday was absolutely awful.
+Balance|توازن|It's important to keep a balance between work and life.
+Ban|يمنع|The city plans to ban cars from the center.
+Basic|أساسي|Food and water are basic needs.
+Behavior|سلوك|The child's behavior has improved a lot.
+Belong|ينتمي إلى|Does this umbrella belong to you?
+Blame|يلوم|Don't blame me for your mistakes.
+Block|يحجب/يسد|A big truck is blocking the road.
+Blood|دم|He fainted at the sight of blood.
+##
+Brilliant|رائع/ذكي|That is a brilliant idea!
+Business|عمل/تجارة|She wants to start her own business.
+Candidate|مرشح|There are three candidates for the job.
+Career|مسيرة مهنية|He wants a career in journalism.
+Celebrate|يحتفل|We will celebrate your graduation.
+Century|قرن|This castle was built in the 15th century.
+Challenge|تحدي|Learning a new language is a big challenge.
+Character|شخصية|I like the main character in this book.
+Choose|يختار|You have to choose between these two.
+Common|شائع|It's common to feel nervous before a test.
+Compare|يقارن|Don't compare yourself to others.
+Complain|يشكو|He always complains about the weather.
+Condition|حالة|The car is in very good condition.
+Confidence|ثقة|Success gave her more confidence.
+Confirm|يؤكد|Please confirm your booking by email.
+Consider|يفكر في/يعتبر|We are considering moving to a new house.`;
+const syn=[["big","كبير","large","واسع / ضخم"],["happy","سعيد","joyful","مبتهج"],["begin","يبدأ","start","ينطلق / يبدأ"],["smart","ذكي","intelligent","عبقري"],["quick","سريع","fast","سريع جدًا"],["brave","شجاع","courageous","جريء"],["beautiful","جميل","pretty","لطيف / جميلة"],["friend","صديق","companion","رفيق"]];
+const opp=[["hot","حار","cold","بارد"],["big","كبير","small","صغير"],["happy","سعيد","sad","حزين"],["light","مضيء","dark","مظلم"],["strong","قوي","weak","ضعيف"],["full","ممتلئ","empty","فارغ"],["early","مبكر","late","متأخر"],["good","جيد","bad","سيئ"]];
+const verbs="be|was/were|been|يكون;become|became|become|يصبح;begin|began|begun|يبدأ;break|broke|broken|يكسر;bring|brought|brought|يُحضر;build|built|built|يبني;buy|bought|bought|يشتري;catch|caught|caught|يمسك;choose|chose|chosen|يختار;come|came|come|يأتي;cost|cost|cost|يكلّف;cut|cut|cut|يقطع;do|did|done|يفعل;draw|drew|drawn|يرسم;drink|drank|drunk|يشرب;drive|drove|driven|يقود سيارة;eat|ate|eaten|يأكل;fall|fell|fallen|يقع;feel|felt|felt|يشعر;fight|fought|fought|يقاتل;find|found|found|يجد;fly|flew|flown|يطير;forget|forgot|forgotten|ينسى;forgive|forgave|forgiven|يسامح;get|got|gotten/got|يحصل على;give|gave|given|يعطي;go|went|gone|يذهب;grow|grew|grown|ينمو;have|had|had|يملك;hear|heard|heard|يسمع;hide|hid|hidden|يختبئ;hit|hit|hit|يضرب;hold|held|held|يمسك / يحمل;hurt|hurt|hurt|يؤذي;keep|kept|kept|يحتفظ;know|knew|known|يعرف;lead|led|led|يقود / يتزعّم;leave|left|left|يغادر;lend|lent|lent|يُقرض;let|let|let|يسمح;lose|lost|lost|يخسر;make|made|made|يصنع;mean|meant|meant|يعني;meet|met|met|يقابل;pay|paid|paid|يدفع;put|put|put|يضع;read|read|read|يقرأ;ride|rode|ridden|يركب;ring|rang|rung|يرنّ;run|ran|run|يركض".split(";").map(s=>s.split("|"));
+
+const W=[];DATA.split("\n##\n").forEach(s=>s.split("\n").forEach(l=>{const[w,ar,ex]=l.split("|");W.push({w,ar,ex})}));
+const WU=[...new Map(W.map(x=>[x.w.toLowerCase(),x])).values()];
+const sh=a=>[...a].sort(()=>Math.random()-.5),pick=a=>a[Math.random()*a.length|0];
+const opts=(ans,pool)=>sh(sh([...new Set(pool.filter(x=>x!==ans))]).slice(0,3).concat(ans));
+const re=w=>new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i");
+const FILL=W.filter(x=>re(x.w).test(x.ex));
+const G={
+mean(){const x=pick(WU);return{c:"📖 Meaning",q:`What does “${x.w}” mean?`,qa:`ما معنى ${x.w}؟`,ans:x.ar,o:opts(x.ar,WU.map(y=>y.ar)),say:x.w,tip:`${x.w} = ${x.ar}`}},
+rev(){const x=pick(WU);return{c:"📖 Meaning",q:`Which English word means “${x.ar}”?`,ans:x.w,o:opts(x.w,WU.map(y=>y.w)),tip:`${x.w} = ${x.ar}`,say:null}},
+fill(){const x=pick(FILL),a=x.w.toLowerCase();return{c:"✏️ Complete the sentence",q:"Choose the missing word:",sent:x.ex.replace(re(x.w),"_____"),ans:a,o:opts(a,WU.map(y=>y.w.toLowerCase())),say:null,full:x.ex,tip:`${x.w} = ${x.ar}`}},
+past(){const v=pick(verbs);return{c:"🚀 Verbs",q:`Past simple of “${v[0]}”?`,ans:v[1],o:opts(v[1],verbs.map(x=>x[1])),say:v[0],tip:`${v[0]} → ${v[1]} → ${v[2]}`}},
+pp(){const v=pick(verbs);return{c:"🚀 Verbs",q:`Past participle of “${v[0]}”?`,ans:v[2],o:opts(v[2],verbs.map(x=>x[2])),say:v[0],tip:`${v[0]} → ${v[1]} → ${v[2]}`}},
+vm(){const v=pick(verbs);return{c:"🚀 Verbs",q:`What does “${v[0]}” mean?`,qa:`ما معنى ${v[0]}؟`,ans:v[3],o:opts(v[3],verbs.map(x=>x[3])),say:v[0],tip:`${v[0]} = ${v[3]}`}},
+syn(){const p=pick(syn);return{c:"🤝 Synonyms",q:`Same meaning as “${p[0]}”?`,qa:"كلمة بنفس المعنى",ans:p[2],o:opts(p[2],syn.map(x=>x[2])),say:`Same meaning as ${p[0]}`,tip:`${p[0]} (${p[1]}) = ${p[2]} (${p[3]})`}},
+opp(){const p=pick(opp);return{c:"⚡ Opposites",q:`Opposite of “${p[0]}”?`,qa:"عكس الكلمة",ans:p[2],o:opts(p[2],opp.map(x=>x[2])),say:`Opposite of ${p[0]}`,tip:`${p[0]} (${p[1]}) ↔ ${p[2]} (${p[3]})`}}};
+const CATS=[["mix","🎲","Mix","كل شيء!",["mean","rev","fill","past","pp","vm","syn","opp"],"c0"],["mean","📖","Meanings","معاني الكلمات",["mean","rev"],"c1"],["fill","✏️","Sentences","أكمل الجملة",["fill"],"c2"],["verb","🚀","Verbs","الأفعال",["past","pp","vm"],"c3"],["syn","🤝","Synonyms","متشابهة",["syn"],"c4"],["opp","⚡","Opposites","متضادة",["opp"],"c5"]];
+const PR=["Amazing! 🌟","Super! 🎉","Fantastic! 🏆","Brilliant! ✨","You rock! 🚀","Wow! 🦸","Great job! 👏"],PA=["ممتاز!","أحسنت!","رائع!","يا بطل!","مذهل!"];
+let ac;function sfx(f,d=.15,t="triangle"){try{if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state=="suspended")ac.resume();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type=t;g.gain.setValueAtTime(.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
+/* fireworks */
+const cv=document.getElementById("fx"),cx=cv.getContext("2d");let P=[],raf=0;
+function rz(){cv.width=innerWidth;cv.height=innerHeight}rz();addEventListener("resize",rz);
+function burst(x,y){const h=Math.random()*360;for(let k=0;k<48;k++){const a=Math.PI*2*k/48,s=2+Math.random()*4.5;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h:h+Math.random()*50,r:2+Math.random()*2})}run()}
+function run(){if(raf)return;const f=()=>{cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>.02);for(const p of P){p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.vx*=.985;p.vy*=.985;p.l-=.013;cx.globalAlpha=p.l;cx.fillStyle=`hsl(${p.h},100%,60%)`;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()}cx.globalAlpha=1;if(P.length)raf=requestAnimationFrame(f);else{raf=0;cx.clearRect(0,0,cv.width,cv.height)}};raf=requestAnimationFrame(f)}
+function fire(n=3){for(let k=0;k<n;k++)setTimeout(()=>{burst(cv.width*(.15+Math.random()*.7),cv.height*(.12+Math.random()*.4));sfx(250+Math.random()*500,.35,"sawtooth")},k*260)}
+function praise(t){const p=document.getElementById("pr");p.textContent=t;p.classList.remove("on");void p.offsetWidth;p.classList.add("on")}
+/* game */
+const m=document.getElementById("m");let qs=[],i=0,score=0,streak=0,best=0,done=0;
+try{best=+localStorage.getItem("eq_best")||0}catch(e){}
+function menu(){document.getElementById("hd").style.display="";
+m.innerHTML=`<span class="mas">🦉</span><div class="ban">Pick a quiz! 🎯</div><p>كل إجابة صحيحة = ألعاب نارية 🎆 — 10 أسئلة وتصير بطل!</p>${best?`<p>🏅 Best score: <b>${best}/10</b></p>`:""}<div class="home">${CATS.map((c,k)=>`<div class="hc ${c[5]}" data-k="${k}" style="animation-delay:${k*.08}s,${k*.3}s"><span class="ic">${c[1]}</span><b>${c[2]}</b><small>${c[3]}</small></div>`).join("")}</div>`;
+m.onclick=e=>{const c=e.target.closest(".hc");if(c){sfx(660,.12);start(CATS[+c.dataset.k][4])}}}
+function start(types){const used=new Set();qs=[];let t=0,pool=[];
+while(qs.length<10&&t++<200){if(!pool.length)pool=sh(types);const q=G[pool.pop()]();const key=q.q+(q.sent||"");if(used.has(key))continue;used.add(key);qs.push(q)}
+i=0;score=0;streak=0;document.getElementById("hd").style.display="none";ask()}
+function ask(){done=0;const q=qs[i];
+m.innerHTML=`<div class="top"><span>Question ${i+1}/10</span><span id="mood" style="font-size:1.6rem">🦉</span><span>⭐ ${score} ${streak>=2?"🔥"+streak:""}</span></div><div class="bar"><i style="width:${i*10}%"></i></div>
+<div id="qc"><span class="chip">${q.c}</span><div class="q">${q.q}</div>${q.qa?`<div class="qa">${q.qa}</div>`:""}${q.sent?`<div class="sent">“${q.sent}”</div>`:""}<div id="o">${q.o.map(x=>`<button class="opt" dir="auto">${x}</button>`).join("")}</div><div id="fb"></div></div>`;
+setTimeout(()=>document.querySelector(".bar i").style.width=(i*10+2)+"%",50);
+if(q.say)say(q.say);else if(q.sent)say(q.sent.replace("_____","blank"));
+m.onclick=e=>{const b=e.target.closest(".opt");if(!b||done)return;done=1;const ok=b.textContent===q.ans;
+document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.textContent===q.ans)x.classList.add("ok")});
+const fb=document.getElementById("fb"),last=i==9,tip=`<div class="tip">💡 ${q.tip}</div>`;
+if(ok){score++;streak++;b.classList.add("ok");document.getElementById("mood").textContent="🤩";
+const p=pick(PR);praise(p);fire(3+Math.min(streak,3));[523,659,784,1046].forEach((f,k)=>setTimeout(()=>sfx(f,.2),k*100));
+setTimeout(()=>say(q.full||p.replace(/[^\w! ]/g,"")),400);
+fb.innerHTML=`<div class="good">${p} ${pick(PA)}</div>${streak>=3?`<div>🔥 ${streak} in a row! ${streak} إجابات متتالية!</div>`:""}${tip}`}
+else{streak=0;b.classList.add("no");document.getElementById("mood").textContent="🤗";sfx(200,.3,"sine");
+fb.innerHTML=`<div class="try">Almost! Good try 💪 قريب! حاول مرة ثانية</div><div>✅ <b dir="auto">${q.ans}</b></div>${tip}`}
+fb.innerHTML+=`<button class="go" id="nx">${last?"See my result 🏆":"Next ➡️"}</button>`;
+document.getElementById("nx").onclick=()=>{i++;i>=10?result():ask()};
+document.getElementById("nx").scrollIntoView({block:"nearest",behavior:"smooth"})}}
+function result(){try{if(score>best){best=score;localStorage.setItem("eq_best",best)}}catch(e){}
+const t=score==10?["🏆🌟🌟🌟","PERFECT! You are a SUPERSTAR! كامل العلامة!"]:score>=8?["🥇🌟🌟","Amazing! You are a champion! أنت بطل!"]:score>=6?["🥈🌟","Great job! Keep going! أحسنت!"]:score>=4?["🥉","Good try! Practice and you will win! تدرّب وبتفوز!"]:["💪","Don't give up! Every try makes you stronger! لا تستسلم!"];
+m.innerHTML=`<span class="mas">🦉</span><div class="ban" style="background:var(--yl);color:#12307a">Your Result</div><div id="qc"><div class="big">${t[0]}</div><h2>${score} / 10</h2><p>${t[1]}</p><button class="go" id="ag">Play again 🔁</button><button class="go yl" id="mn">Menu 🎯</button></div>`;
+document.getElementById("ag").onclick=()=>start(lastTypes);document.getElementById("mn").onclick=menu;
+if(score>=4){let n=score>=8?10:5;for(let k=0;k<n;k++)setTimeout(()=>fire(2),k*500);praise(score>=8?"🏆 CHAMPION! 🏆":"🌟 Well done! 🌟")}
+say(score>=6?"Great job champion!":"Good try! Keep practicing!")}
+let lastTypes=CATS[0][4];
+const _s=start;start=function(t){lastTypes=t;_s(t)};
+document.getElementById("rs").onclick=menu;
+menu();
+</script></body></html>
