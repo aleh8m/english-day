@@ -1,37 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>B1 Words 📚 - English Language Day</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:linear-gradient(#bfe6ff,#fff7d6);min-height:100vh;color:#23406b;padding-bottom:90px}
-h1{text-align:center;margin:20px 10px 4px;font-size:1.7rem}
-p.sub{text-align:center;margin:0 0 12px}
-#sets{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:8px 12px}
-#sets button{border:0;border-radius:20px;padding:8px 14px;background:#fff;color:#23406b;font-weight:700;cursor:pointer;box-shadow:0 2px 5px #0002}
-#sets button.on{background:#ff7a59;color:#fff}
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:14px;max-width:1000px;margin:auto}
-.card{perspective:800px;height:130px;cursor:pointer}
-.in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
-.card.flip .in{transform:rotateY(180deg)}
-.f,.b{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px;box-shadow:0 4px 10px #0003}
-.f{background:#fff;font-size:1.25rem;font-weight:800;color:#d62839}
-.b{background:#23406b;color:#fff;transform:rotateY(180deg);font-size:.82rem;gap:5px}
-.b .ar{font-size:1.2rem;font-weight:800;color:#ffd24d}
-.b .ex{font-style:italic}
-.sp{position:absolute;top:6px;right:8px;font-size:1rem;background:none;border:0;cursor:pointer}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#fff;padding:10px 4px calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -2px 8px #0003;font-size:.8rem}
-nav a{color:#23406b;text-decoration:none;font-weight:700}
-</style>
-</head>
-<body>
-<h1>📚 B1 Words</h1>
-<p class="sub">Tap a card to flip it ✨ اضغط على الكلمة</p>
-<div id="sets"></div>
-<div id="grid"></div>
-<nav><a href="index.html">🏠 Home</a><a href="synonyms.html">🤝 Synonyms</a><a href="opposites.html">⚡ Opposites</a><a href="verbs.html">🚀 Verbs</a><a href="words.html">📚 Words</a></nav>
+:root{--bl:#1e4fa8;--sky:#cfe6f7;--yl:#fbe97a;--pk:#e8707a;--bg:#eaf4fc;--tx:#12307a;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}}
+:root[data-theme="dark"]{--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Comic Sans MS","Trebuchet MS",system-ui,sans-serif;text-align:center}
+header{background:linear-gradient(#7fc0ec,var(--sky));padding:12px 10px 6px;position:relative;overflow:hidden}
+h1{display:inline-block;background:var(--yl);color:#12307a;margin:4px;padding:8px 16px;border-radius:14px;font-size:1.15rem;transform:rotate(-1.5deg)}
+.sub{color:var(--bl);font-weight:bold;margin:3px;font-size:.9rem}
+.cloud{position:absolute;font-size:2rem;opacity:.8;animation:fly 18s linear infinite}
+@keyframes fly{from{left:-10%}to{left:110%}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes sw{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-3px) rotate(1.2deg)}}
+button{font:inherit;cursor:pointer;border:0}
+nav{display:flex;gap:4px;justify-content:flex-start;padding:8px 6px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav button,nav a{background:var(--bl);color:#fff;padding:8px 9px;border-radius:12px;font-weight:bold;font-size:.78rem;white-space:nowrap;text-decoration:none;flex:none}
+nav a{background:var(--pk)}
+nav button.on{background:var(--yl);color:#12307a;transform:scale(1.08)}
+.ban{display:inline-block;background:var(--bl);color:#fff;padding:8px 20px;border-radius:12px;font-size:1.2rem;margin:8px 0}
+.say{background:var(--yl);color:#12307a;padding:10px 16px;border-radius:20px;font-weight:bold;margin:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;padding:10px;max-width:780px;margin:auto}
+.fl{perspective:800px;height:120px;animation:pop .4s backwards;cursor:pointer}
+.in{position:relative;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fl.f .in{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--bl);border-radius:16px;background:var(--card);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:6px}
+.fb{transform:rotateY(180deg);background:var(--yl);color:#12307a}
+.fl b{font-size:1.05rem}
+.fl:nth-child(odd) .fa{animation:sw 3s ease-in-out infinite}
+.fl:nth-child(even) .fa{animation:sw 3s ease-in-out infinite reverse}
+.ar{font-size:.95rem;color:#a02a35;font-weight:bold}
+.ex{font-size:.72rem;font-style:italic}
+footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:bold}
+</style></head><body>
+<header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
+<h1>B1 Words 📚</h1>
+<p class="sub">Tap a card to flip it! اكبس على البطاقة</p></header>
+<nav id="sets"><a href="index.html">🏠 Home</a></nav>
+<main><div class="ban" id="ttl"></div><br><button class="say" id="spk">🔊 Hear all</button><div class="grid" id="grid"></div></main>
+<footer>Practice ⭐ Learn ⭐ Improve</footer>
 <script>
 const DATA=`Brief|مختصر|The meeting was very brief.
 Broad|واسع|He has broad shoulders and is very tall.
@@ -246,25 +256,17 @@ Confidence|ثقة|Success gave her more confidence.
 Confirm|يؤكد|Please confirm your booking by email.
 Consider|يفكر في/يعتبر|We are considering moving to a new house.`;
 const sets=DATA.split("\n##\n").map(s=>s.split("\n").map(l=>l.split("|")));
-const setsEl=document.getElementById("sets"),grid=document.getElementById("grid");
-function show(i){
-  [...setsEl.children].forEach((b,j)=>b.classList.toggle("on",i===j));
-  grid.innerHTML="";
-  sets[i].forEach(([w,ar,ex])=>{
-    const c=document.createElement("div");c.className="card";
-    c.innerHTML='<div class="in"><div class="f"></div><div class="b"><div class="ar" dir="auto"></div><div class="ex"></div></div></div>';
-    c.querySelector(".f").textContent=w;
-    c.querySelector(".ar").textContent=ar;
-    c.querySelector(".ex").textContent=ex;
-    const sp=document.createElement("button");sp.className="sp";sp.textContent="🔊";
-    sp.onclick=e=>{e.stopPropagation();try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w+". "+ex);u.lang="en-US";speechSynthesis.speak(u)}catch(_){}};
-    c.querySelector(".b").appendChild(sp);
-    c.onclick=()=>c.classList.toggle("flip");
-    grid.appendChild(c);
-  });
+const setsEl=document.getElementById("sets"),grid=document.getElementById("grid");let cur=0;
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
+function show(i){cur=i;
+  [...setsEl.querySelectorAll("button")].forEach((b,j)=>b.classList.toggle("on",i===j));
+  document.getElementById("ttl").textContent="Set "+(i+1)+" 📚";
+  grid.innerHTML=sets[i].map(([w,ar,ex],k)=>`<div class="fl" data-k="${k}" style="animation-delay:${k*.05}s"><div class="in"><div class="fa"><b></b></div><div class="fb"><span class="ar"></span><span class="ex"></span></div></div></div>`).join("");
+  [...grid.children].forEach((c,k)=>{const [w,ar,ex]=sets[i][k];c.querySelector(".fa b").textContent=w;c.querySelector(".ar").textContent=ar;c.querySelector(".ex").textContent=ex});
 }
+grid.onclick=e=>{const c=e.target.closest(".fl");if(!c)return;c.classList.toggle("f");const [w,ar,ex]=sets[cur][+c.dataset.k];say(c.classList.contains("f")?w+". "+ex:w)};
+document.getElementById("spk").onclick=()=>say(sets[cur].map(x=>x[0]).join(". "));
 sets.forEach((_,i)=>{const b=document.createElement("button");b.textContent="Set "+(i+1);b.onclick=()=>show(i);setsEl.appendChild(b)});
 show(0);
 </script>
-</body>
-</html>
+</body></html>
