@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grade 1 – Semester 1 📘</title>
+<style>
+:root{--bl:#1e4fa8;--sky:#cfe6f7;--yl:#fbe97a;--pk:#e8707a;--bg:#eaf4fc;--tx:#12307a;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}}
+:root[data-theme="dark"]{--bg:#0f2347;--card:#16356b;--tx:#eaf4ff;--sky:#1c3f7a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Comic Sans MS","Trebuchet MS",system-ui,sans-serif;text-align:center}
+header{background:linear-gradient(#7fc0ec,var(--sky));padding:12px 10px 8px;position:relative;overflow:hidden}
+h1{display:inline-block;background:var(--yl);color:#12307a;margin:4px;padding:8px 16px;border-radius:14px;font-size:1.15rem;transform:rotate(-1.5deg)}
+.sub{color:var(--bl);font-weight:bold;margin:3px;font-size:.9rem}
+.cloud{position:absolute;font-size:2rem;opacity:.8;animation:fly 18s linear infinite}
+@keyframes fly{from{left:-10%}to{left:110%}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes sw{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-3px) rotate(1.2deg)}}
+@keyframes shk{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+nav{display:flex;gap:4px;justify-content:flex-start;padding:8px 6px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+button{font:inherit;cursor:pointer;border:0}
+nav button{background:var(--bl);color:#fff;padding:8px 9px;border-radius:12px;font-weight:bold;font-size:.78rem;white-space:nowrap}
+.units{display:flex;gap:6px;overflow-x:auto;padding:10px 8px 4px;max-width:780px;margin:auto}
+.units button{flex:none;background:var(--card);color:var(--tx);border:3px solid var(--bl);padding:8px 12px;border-radius:14px;font-weight:bold;font-size:.95rem}
+.units button.on{background:var(--yl);color:#12307a;transform:scale(1.06)}
+.ban{display:inline-block;background:var(--bl);color:#fff;padding:8px 20px;border-radius:12px;font-size:1.2rem;margin:10px 0 4px}
+.ban.pk{background:var(--pk)}
+.say{background:var(--yl);color:#12307a;padding:10px 16px;border-radius:20px;font-weight:bold;margin:6px;font-size:1rem}
+.say small{display:block;font-weight:normal;font-size:.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;padding:10px;max-width:780px;margin:auto}
+.fl{perspective:800px;height:125px;animation:pop .4s backwards;cursor:pointer}
+.in{position:relative;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fl.f .in{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--bl);border-radius:16px;background:var(--card);display:flex;flex-direction:column;justify-content:center;gap:2px;padding:6px}
+.fb{transform:rotateY(180deg);background:var(--yl);color:#12307a}
+.fl:nth-child(odd) .fa{animation:sw 3s ease-in-out infinite}.fl:nth-child(even) .fa{animation:sw 3s ease-in-out infinite reverse}
+.fl b{font-size:1.05rem}.fl .e{font-size:2.3rem;line-height:1.1}.ar{font-size:1.2rem;color:var(--pk);font-weight:bold}.fb .ar{color:#a02a35}
+.box{max-width:780px;margin:12px auto}
+.box h2{display:inline-block;background:var(--pk);color:#fff;border-radius:12px;padding:4px 16px;font-size:1.05rem;margin:6px 0}
+.chip{background:var(--card);color:var(--tx);border:3px solid var(--bl);border-radius:18px;padding:8px 14px;margin:4px;font-weight:bold;font-size:1rem}
+.chip small{display:block;font-weight:normal;color:var(--pk);font-size:.85rem}
+.chip.hd,.fl.hd .fa{background:var(--yl);color:#12307a}
+.phn{display:inline-block;vertical-align:top;margin:6px;padding:10px;border-radius:18px;background:var(--card);border:3px dashed var(--pk);min-width:130px}
+.phn strong{display:block;font-size:2rem;color:var(--pk)}
+.chip:active,.opt:active,.say:active{transform:scale(.92)}
+#quiz{max-width:480px;margin:10px auto;background:var(--card);border:3px dashed var(--bl);border-radius:18px;padding:14px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.opt{min-height:90px;border-radius:14px;background:var(--sky);color:var(--tx);font-size:2.8rem;border:3px solid transparent}
+.ok{background:#7be08a!important}.no{background:#ff9d9d!important;animation:shk .4s}
+.fb2{min-height:1.5em;font-weight:bold}
+.mission{max-width:560px;margin:10px auto;background:var(--bl);color:#fff;border-radius:16px;padding:8px 12px;font-weight:bold}
+.cf{position:fixed;top:-30px;font-size:1.6rem;z-index:9;animation:fl 2.6s linear forwards}
+@keyframes fl{to{transform:translateY(110vh) rotate(500deg)}}
+footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:bold}
+#mus{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--yl);color:#12307a;border-radius:50%;width:52px;height:52px;font-size:1.5rem;box-shadow:0 3px 8px #0005;z-index:9}
+:focus-visible{outline:4px solid var(--pk);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
+<h1>Grade 1 • Semester 1 📘</h1>
+<p class="sub"><a href="curriculum.html#g1" style="color:var(--bl)">🇯🇴 الصف الأول ◀ الفصل الأول</a><br>Tap the cards, listen and play! ⭐ <span id="st">0</span></p></header>
+<nav id="nav"><button data-href="index.html">🏠 Home</button><button data-href="curriculum.html">🇯🇴 Curriculum</button><button data-href="index.html#syn">🤝 Synonyms</button><button data-href="index.html#opp">⚡ Opposites</button><button data-href="index.html#irr">🚀 Verbs</button><button data-href="quiz.html">🏆 Contest</button><button data-href="alphabet.html">🔤 ABC</button><button data-href="words.html">📚 Words</button><button data-href="talk.html">💬 Talk</button><button data-href="phrases.html">⭐ Phrases</button></nav>
+<div class="units" id="units"></div>
+<main id="main"></main>
+<footer>Practice ⭐ Learn ⭐ Improve</footer>
+<button id="mus" aria-label="sound on or off">🔊</button>
+<script>
+const $=s=>document.querySelector(s);
+const D=(a)=>a.map(x=>({en:x[0],e:x[1],ar:x[2]}));
+const U=[
+{id:"w",n:"👋 Welcome",c:"#FFB3C7",m:"Mission: Say hello, find colours and count to ten!",
+g:[["Say hello",D([["Hello","👋","مرحبا"],["Hi","🙋","أهلاً"],["Good morning","🌅","صباح الخير"]])],
+["Colours",D([["blue","🔵","أزرق"],["green","🟢","أخضر"],["orange","🟠","برتقالي"],["red","🔴","أحمر"],["yellow","🟡","أصفر"],["brown","🟤","بني"]])],
+["Numbers",D([["one","1️⃣","واحد"],["two","2️⃣","اثنان"],["three","3️⃣","ثلاثة"],["four","4️⃣","أربعة"],["five","5️⃣","خمسة"],["six","6️⃣","ستة"],["seven","7️⃣","سبعة"],["eight","8️⃣","ثمانية"],["nine","9️⃣","تسعة"],["ten","🔟","عشرة"]])]],
+s:[["Hello!","مرحبا"],["Hi!","أهلاً"],["Good morning!","صباح الخير"]],p:[]},
+{id:"f",n:"👨‍👩‍👧 Family",c:"#FFD97A",m:"Mission: Meet my family and friends!",
+g:[["My family",D([["boy","👦","ولد"],["girl","👧","بنت"],["dad","👨","أبي"],["mum","👩","أمي"],["brother","🧒","أخ"],["sister","👩‍🦱","أخت"],["friend","🧑‍🤝‍🧑","صديق"],["cat","🐱","قطة"]])]],
+s:[["What's your name?","ما اسمك؟"],["My name's Sam. / I'm Sam.","اسمي سام"],["How old are you?","كم عمرك؟"],["I'm six.","عمري ست سنوات"],["Who's this?","من هذا؟"],["This is my dad.","هذا أبي"]],
+p:[["Ss",["sing","sister","six","sun"]],["Dd",["dad","dig","doll","duck"]],["Cc",["cap","cat","cup","cut"]],["Aa",["Ann","ant","apple","arrow"]]]},
+{id:"b",n:"🎒 School Bag",c:"#B7F0CF",m:"Mission: Pack my school bag!",
+g:[["In my bag",D([["bag","🎒","حقيبة"],["book","📘","كتاب"],["crayon","🖍️","قلم تلوين"],["eraser","🧽","ممحاة"],["pen","🖊️","قلم حبر"],["pencil","✏️","قلم رصاص"],["pencil case","👝","مقلمة"],["ruler","📏","مسطرة"]])]],
+s:[["I've got a pencil.","عندي قلم رصاص"],["I haven't got a ruler.","ليس عندي مسطرة"]],
+p:[["Pp",["pen","pencil","pencil case","pink"]],["Rr",["rabbit","red","ruler","run"]],["Ee",["egg","elbow","elephant"]],["Bb",["bag","ball","book","boy"]]]},
+{id:"c",n:"🏫 Classroom",c:"#B9DBFF",m:"Mission: Explore our classroom!",
+g:[["In the classroom",D([["chair","🪑","كرسي"],["desk","🗄️","طاولة"],["door","🚪","باب"],["floor","🟫","أرضية"],["teacher","🧑‍🏫","معلمة"],["wall","🧱","جدار"],["whiteboard","⬜","سبورة"],["window","🪟","نافذة"]])]],
+s:[["What's this?","ما هذا؟"],["It's a door.","إنه باب"],["The book is on the chair.","الكتاب على الكرسي"],["The pens are on the floor.","الأقلام على الأرض"]],
+p:[["Tt",["teacher","teddy","ten","two"]],["Mm",["milk","moon","mouse","mum"]],["Ww",["wall","water","wave","whiteboard"]],["Ii",["igloo","in","ink","insect"]]]},
+{id:"t",n:"🧸 Toys",c:"#E3C9FF",m:"Mission: Find my favourite toy!",
+g:[["Toys",D([["ball","⚽","كرة"],["car","🚗","سيارة"],["doll","🪆","دمية"],["plane","✈️","طائرة"],["robot","🤖","روبوت"],["teddy","🧸","دبدوب"],["train","🚂","قطار"],["yoyo","🪀","يويو"]])],
+["Feelings",D([["happy","😊","سعيد"],["sad","😢","حزين"]])]],
+s:[["What colour is it?","ما لونه؟"],["It's red.","إنه أحمر"],["I'm happy. / I'm sad.","أنا سعيد / أنا حزين"],["What's your favourite toy?","ما لعبتك المفضلة؟"],["It's my teddy.","إنها دبدوبي"]],
+p:[["Sound it out!",["bat","bed","cap","cat","map","mat","red","sad","sit","tap","web","wet"]]]},
+{id:"d",n:"📅 Days",c:"#FFD0A8",m:"Mission: Learn the days of the week!",
+g:[["Days",D([["Sunday","☀️","الأحد"],["Monday","🌙","الاثنين"],["Tuesday","🔥","الثلاثاء"],["Wednesday","💧","الأربعاء"],["Thursday","⚡","الخميس"],["Friday","🕌","الجمعة"],["Saturday","🌟","السبت"]])]],s:[],p:[],nq:1}];
+
+let S={stars:0,b:{}},muted=false;
+try{S=Object.assign(S,JSON.parse(localStorage.getItem("s1g1")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("s1g1",JSON.stringify(S))}catch(e){}};
+function say(t){if(muted||!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t),V=speechSynthesis.getVoices();u.lang="en-US";u.rate=.8;u.pitch=1.25;const v=V.find(v=>/en[-_]US/.test(v.lang))||V.find(v=>v.lang.startsWith("en"));if(v)u.voice=v;speechSynthesis.speak(u)}
+$("#mus").onclick=()=>{muted=!muted;$("#mus").textContent=muted?"🔇":"🔊";if(muted&&window.speechSynthesis)speechSynthesis.cancel()};
+$("#nav").onclick=e=>{const h=e.target.closest("[data-href]");if(h)location.href=h.dataset.href};
+const stars=n=>{S.stars+=n;save();$("#st").textContent=S.stars};
+function boom(){for(let i=0;i<24;i++){const c=document.createElement("div");c.className="cf";c.textContent=["⭐","🎉","✨","🎈"][i%4];c.style.left=Math.random()*95+"vw";c.style.animationDelay=Math.random()*.7+"s";document.body.append(c);setTimeout(()=>c.remove(),3600)}}
+const ar=t=>`<span dir="rtl" lang="ar">${t}</span>`;
+const sh=a=>[...a].sort(()=>Math.random()-.5);
+function show(i){const u=U[i];
+try{history.replaceState(null,"","#"+u.id)}catch(e){}
+document.querySelectorAll("#units button").forEach((b,k)=>b.classList.toggle("on",k==i));
+let h=`<div class="ban ${i%2?"pk":""}">${u.n}</div><div class="mission">${u.m}${S.b[u.id]?" 🏅":""}</div>`;
+u.g.forEach(g=>{h+=`<div class="box"><h2>${g[0]}</h2><div class="grid">${g[1].map((w,k)=>`<div class="fl" data-s="${w.en}" style="animation-delay:${k*.05}s"><div class="in"><div class="fa"><span class="e">${w.e}</span><b>${w.en}</b></div><div class="fb"><span class="ar">${ar(w.ar)}</span></div></div></div>`).join("")}</div></div>`});
+if(u.s.length)h+=`<div class="box"><h2>🗣️ Say it!</h2><br>${u.s.map(s=>`<button class="chip" data-s="${s[0].split(" / ")[0].replace("My name's Sam.","My name's Sam")}">🔊 ${s[0]}<small>${ar(s[1])}</small></button>`).join("")}</div>`;
+if(u.p.length)h+=`<div class="box"><h2>🔤 Sounds</h2><br>${u.p.map(p=>`<div class="phn"><strong>${p[0]}</strong>${p[1].map(w=>`<button class="chip" data-s="${u.id=="t"?w.split("").join(". ")+". "+w:w}">${w}</button>`).join("")}</div>`).join("")}</div>`;
+if(!u.nq)h+=`<button class="say" id="pl">🎮 Play: Find it!<small>العب وجمّع النجوم</small></button><div id="gm"></div>`;
+$("#main").innerHTML=h;
+$("#main").querySelectorAll(".fl,.chip").forEach(b=>b.addEventListener("click",()=>{say(b.dataset.s);if(b.classList.contains("fl"))b.classList.toggle("f");else b.classList.add("hd")}));
+if(!u.nq)$("#pl").onclick=()=>game(u)}
+function game(u){let W=u.g.flatMap(g=>g[1]),i=0;const N=5,gm=$("#gm");$("#pl").hidden=true;
+(function r(){const t=sh(W)[0],o=sh([t,...sh(W.filter(x=>x.e!=t.e)).slice(0,3)]);
+gm.innerHTML=`<div id="quiz"><b>Round ${i+1} / ${N} ⭐ ${S.stars}</b><br><button class="say" data-s="Find ${t.en}!">🔊 Find ${t.en}!</button><div class="opts">${o.map(x=>`<button class="opt" aria-label="${x.en}">${x.e}</button>`).join("")}</div><div class="fb2" id="fb" aria-live="polite">&nbsp;</div></div>`;say("Find "+t.en+"!");
+gm.querySelector(".say").onclick=()=>say("Find "+t.en+"!");
+gm.querySelectorAll(".opt").forEach((b,k)=>b.onclick=()=>{if(o[k]==t){b.classList.add("ok");b.append(" ✓");$("#fb").textContent="Great job! +1 ⭐";say("Great job!");stars(1);gm.querySelectorAll(".opt").forEach(x=>x.disabled=true);setTimeout(()=>{if(++i<N)r();else{S.b[u.id]=1;stars(5);save();boom();say("Congratulations!");show(U.indexOf(u));$("#gm").innerHTML=`<div id="quiz"><div style="font-size:3rem">🏅</div><h2>Well done!</h2><p>You finished ${u.n}! +5 ⭐</p></div>`}},1000)}else{b.classList.add("no");b.append(" ✗");b.disabled=true;$("#fb").textContent="Try again!";say("Try again!")}})})()}
+$("#units").innerHTML=U.map(u=>`<button>${u.n}</button>`).join("");
+document.querySelectorAll("#units button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#st").textContent=S.stars;
+const i0=U.findIndex(u=>u.id==location.hash.slice(1));show(i0<0?0:i0);
+</script></body></html>
