@@ -1,0 +1,24 @@
+/* A calm, responsive learning path shared by the two entry pages. */
+:root{--bg:#f4f7fc;--card:#fff;--tx:#172e50;--bl:#2459b5;--sky:#e8effb;--pk:#b94763}
+body{font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.55}
+header{padding:36px 20px 24px;background:linear-gradient(135deg,#e5efff,#eef9f6);border-bottom:1px solid #dbe5f2}
+h1{background:none;transform:none;font-size:clamp(1.5rem,4vw,2.5rem);letter-spacing:-.04em;line-height:1.2;margin:0 0 10px;padding:0;color:#173763}
+.sub{font-size:1rem;color:#49617c;margin:0 0 16px}
+.cloud{display:none}.car{margin-top:12px}.av{width:64px;height:64px;font-size:2rem;border-width:2px}.sl{column-gap:16px}.nm{background:none;color:#173763;padding:0}.ph{color:#49617c}.hand{left:65px}
+nav{justify-content:flex-start;max-width:1120px;margin:auto;gap:7px;padding:14px 20px;background:var(--bg);scrollbar-width:thin;border-bottom:1px solid #dde5ef}
+nav button{background:var(--card);color:var(--tx);padding:10px 14px;font-size:.86rem;border:1px solid #dbe4f0;border-radius:10px}
+nav button.on{background:var(--bl);color:white;transform:none;border-color:var(--bl)}
+main{max-width:1120px;margin:0 auto;padding:24px 20px 48px;min-height:55vh}
+.ban{background:none;color:var(--tx);font-size:1.7rem;font-weight:750;padding:0;margin:8px 0}.say{background:#e1ebff;color:#214f9e;border-radius:10px;padding:11px 18px}
+.journey-intro{margin-bottom:24px}.journey-intro p{margin:5px 0 12px;color:#53667e}.learning-path{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;margin-top:24px}
+.lv{max-width:none;width:100%;margin:0;background:var(--card);border:1px solid #dce5ef;border-radius:18px;padding:18px;text-align:left;box-shadow:0 6px 24px #203a6010}
+.lh{background:none!important;color:var(--tx);border-radius:0;padding:0 0 15px;margin:0;border-bottom:1px solid #e4ebf4;font-size:1.2rem}.lh small{color:#61728a;font-weight:500;margin-top:3px}
+.home{max-width:none;gap:10px;padding:0;margin:15px 0 0}.curriculum-entry{max-width:100%;margin:0}
+.hc{background:#f3f6fc!important;color:var(--tx);border:1px solid #e1e8f3;border-radius:12px;padding:16px;text-align:left;box-shadow:none;animation:none;transition:background .15s,transform .15s;min-height:115px;width:100%;display:block}
+.hc:hover{background:#e7effd!important;transform:translateY(-2px)}.hc:active{transform:scale(.98)}.hc .ic{font-size:1.6rem;margin-bottom:7px}.hc b{font-size:1rem}.hc small{font-size:.83rem;color:#5b6e88;display:block;margin-top:4px;direction:rtl;text-align:left}
+.curriculum-entry .hc{display:grid;grid-template-columns:48px 1fr;column-gap:12px;min-height:0;background:#e8f1fd!important}.curriculum-entry .ic{grid-row:1/3;align-self:center;margin:0;font-size:2rem}.curriculum-entry small{margin:0}
+.lv:last-child{grid-column:1/-1}.lv:last-child .hc{min-height:0;background:#fff5d9!important}.grid,.vg{max-width:100%;padding:16px 0;gap:12px}.fl{height:140px}.fa,.fb{border-width:1px;box-shadow:0 3px 12px #203a6010}.fl .fa,.vc,.stage,.stage>span,.w.in b{animation:none}.stage{top:70px}.vg{grid-template-columns:repeat(auto-fill,minmax(95px,1fr))}.vc{font-size:.85rem;padding:10px}.vc small{font-size:.7rem}
+footer{margin:0;padding:24px;background:#173763;font-weight:500}button:focus-visible,a:focus-visible{outline:3px solid #d99600;outline-offset:4px}#mus{width:46px;height:46px;font-size:1.2rem}
+@media(max-width:700px){header{padding:26px 16px 20px}main{padding:18px 14px 32px}nav{padding:10px 14px}.learning-path{grid-template-columns:1fr;gap:16px}.lv{padding:16px}.ban{font-size:1.4rem}.hc{padding:13px}.lv:last-child{grid-column:auto}}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101d30;--card:#192b43;--tx:#edf4ff;--sky:#243e61}header{background:#192b43}h1,.nm{color:#edf4ff}.sub,.ph{color:#b5c6de}.hc{background:#213651!important;color:#edf4ff}.hc small,.lh small,.journey-intro p{color:#b5c6de}.hc:hover{background:#2c486d!important}.curriculum-entry .hc{background:#213e63!important}.lv:last-child .hc{background:#4b3d20!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

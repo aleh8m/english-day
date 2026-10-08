@@ -82,7 +82,7 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 .hand{position:absolute;left:90px;top:2px;font-size:1.5rem;font-style:normal;opacity:0;transform-origin:20% 90%}
 .sl.on .hand{opacity:1;animation:hw .6s ease-in-out infinite alternate}
 @keyframes hw{from{transform:rotate(-22deg)}to{transform:rotate(28deg)}}
-</style></head><body>
+</style><link rel="stylesheet" href="layout.css"></head><body>
 <header id="hd"><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>International English Language Day 🏆</h1>
 <p class="sub">Master the Language, Conquer the World!</p>
@@ -119,7 +119,7 @@ function render(){
 const m=document.getElementById("main");
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t==tab));
 document.getElementById("hd").style.display=tab=="home"?"":"none";
-if(tab=="home"){m.innerHTML=`<div class="ban">My English Journey 🗺️</div><p>ابدأ من المستوى الأول وكمّل خطوة خطوة!</p><button class="say" data-say="1">🔊 Welcome!</button><div class="home"><div class="hc c5" data-href="curriculum.html" style="background:#c0392b"><span class="ic">🇯🇴</span><b>المنهاج الأردني</b><small>الصف الأول ← السادس • الفصول</small></div></div>${LV.map(L=>`<div class="lv"><div class="lh" style="background:${L.c}">${L.t}<small>${L.a}</small></div><div class="home">${L.p.map((p,k)=>`<div class="hc" ${p.h?`data-href="${p.h}"`:p.g?`data-go="${p.g}"`:'data-soon="1"'} style="background:${L.c};${p.w?"grid-column:1/-1;":""}${p.h||p.g?"":"opacity:.5;"}animation-delay:${k*.08}s,${k*.3}s"><span class="ic">${p.i}</span><b>${p.t}</b><small>${p.h||p.g?p.s:"🔒 قريباً"}</small></div>`).join("")}</div></div>`).join("")}`;return}
+if(tab=="home"){m.innerHTML=`<div class="journey-intro"><div class="ban">My English Journey 🗺️</div><p>ابدأ من المستوى الأول وكمّل خطوة خطوة!</p><button class="say" data-say="1">🔊 Welcome!</button></div><div class="home curriculum-entry"><button type="button" class="hc c5" data-href="curriculum.html" style="background:#c0392b"><span class="ic">🇯🇴</span><b>المنهاج الأردني</b><small>الصف الأول ← السادس • الفصول</small></button></div><div class="learning-path">${LV.map(L=>`<div class="lv"><div class="lh" style="background:${L.c}">${L.t}<small>${L.a}</small></div><div class="home">${L.p.map((p,k)=>`<button type="button" class="hc" ${p.h?`data-href="${p.h}"`:p.g?`data-go="${p.g}"`:'data-soon="1"'} style="background:${L.c};${p.w?"grid-column:1/-1;":""}${p.h||p.g?"":"opacity:.5;"}animation-delay:${k*.08}s,${k*.3}s"><span class="ic">${p.i}</span><b>${p.t}</b><small>${p.h||p.g?p.s:"🔒 قريباً"}</small></button>`).join("")}</div></div>`).join("")}</div>`;return}
 if(tab=="con"){startQuiz();return}
 let h=`<div class="ban ${tab=="opp"?"pk":""}">${names[tab]}</div><p>${ar[tab]}</p><button class="say" data-say="intro">🔊 Explain it to me!</button><div class="grid">`;
 if(tab=="irr"){h=h.replace('<div class="grid">','<div class="stage" id="stage"><span>👆 Tap a verb! اكبس على فعل</span></div><div class="vg">');h+=verbs.map((v,i)=>`<button class="vc" data-i="${i}" style="--d:${i*.03}s">${v[0]}<small>${v[3]}</small></button>`).join("")}
@@ -190,3 +190,5 @@ imgs.forEach((im,i)=>{if(o[i]&&o[i].getAttribute("src"))im.src=o[i].getAttribute
 go(0,0,1);
 render();
 </script></body></html>
+
+

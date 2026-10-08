@@ -82,7 +82,7 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 .hand{position:absolute;left:90px;top:2px;font-size:1.5rem;font-style:normal;opacity:0;transform-origin:20% 90%}
 .sl.on .hand{opacity:1;animation:hw .6s ease-in-out infinite alternate}
 @keyframes hw{from{transform:rotate(-22deg)}to{transform:rotate(28deg)}}
-</style></head><body>
+</style><link rel="stylesheet" href="layout.css"></head><body>
 <header id="hd"><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>International English Language Day 🏆</h1>
 <p class="sub">Master the Language, Conquer the World!</p>
@@ -91,7 +91,7 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 <div class="sl" data-say="Never give up!"><i class="hand">👋</i><div class="av"><img alt="Rayyan"><i class="sp s1">✨</i><i class="sp s2">⭐</i><i class="sp s3">✨</i></div><b class="nm">Rayyan</b><div class="ph">Never give up! 💪</div></div>
 <div class="sl" data-say="Keep learning, keep shining!"><i class="hand">👋</i><div class="av"><img alt="Jad"><i class="sp s1">✨</i><i class="sp s2">⭐</i><i class="sp s3">✨</i></div><b class="nm">Jad</b><div class="ph">Keep learning, keep shining! ✨</div></div>
 </div><div class="dots"><i class="on"></i><i></i><i></i></div></div></header>
-<nav id="nav"><button data-t="home">🏠 Home</button><button data-t="syn">🤝 Synonyms</button><button data-t="opp">⚡ Opposites</button><button data-t="irr">🚀 Verbs</button><button data-href="quiz.html">🏆 Contest</button><button data-href="alphabet.html">🔤 ABC</button><button data-href="words.html">📚 Words</button><button data-href="talk.html">💬 Talk</button><button data-href="phrases.html">⭐ Phrases</button></nav>
+<nav id="nav"><button data-t="home">🏠 Home</button><button data-href="curriculum.html">🇯🇴 Curriculum</button><button data-t="syn">🤝 Synonyms</button><button data-t="opp">⚡ Opposites</button><button data-t="irr">🚀 Verbs</button><button data-href="quiz.html">🏆 Contest</button><button data-href="alphabet.html">🔤 ABC</button><button data-href="words.html">📚 Words</button><button data-href="talk.html">💬 Talk</button><button data-href="phrases.html">⭐ Phrases</button></nav>
 <main id="main"></main>
 <footer>Practice ⭐ Learn ⭐ Improve</footer>
 <button id="mus" aria-label="music">🎵</button>
@@ -107,19 +107,19 @@ con:"It's contest time! Ten questions. Answer fast and collect your stars! Good 
 const ar={syn:"كلمات لها نفس المعنى 🤝 — اكبس على البطاقة لتنقلب وتشوف المرادف!",opp:"كلمات متضادة ⚡ — اكبس على البطاقة لتنقلب وتشوف العكس!",irr:"أفعال شاذة 🚀 — اكبس على الفعل لتنقلب وتشوف الماضي واسم المفعول مع الترجمة!"};
 const names={home:"Home 🏠",syn:"Synonyms 🤝",opp:"Opposites ⚡",irr:"Irregular Verbs 🚀",con:"Contest 🏆"};
 const LV=[
-{t:"Level 1 🌱 Little Stars",a:"الصف الأول — البداية",c:"#2fa36b",p:[{i:"🔤",t:"ABC Letters",s:"الحروف والأصوات",h:"alphabet.html"},{i:"✍️",t:"Spelling",s:"تهجئة الكلمات",h:"alphabet.html#spell"},{i:"🔢",t:"Numbers",s:"الأرقام"},{i:"🎨",t:"Colors",s:"الألوان"}]},
+{t:"Level 1 🌱 Little Stars",a:"الصف الأول — البداية",c:"#2fa36b",p:[{i:"📘",t:"Semester 1",s:"الفصل الأول — منهاج الصف الأول الأردني",h:"semester1.html",w:1},{i:"🔤",t:"ABC Letters",s:"الحروف والأصوات",h:"alphabet.html"},{i:"✍️",t:"Spelling",s:"تهجئة الكلمات",h:"alphabet.html#spell"},{i:"🔢",t:"Numbers",s:"الأرقام",h:"semester1.html#w"},{i:"🎨",t:"Colors",s:"الألوان",h:"semester1.html#w"}]},
 {t:"Level 2 🌿 Word Builders",a:"الصف الثاني والثالث",c:"#1e4fa8",p:[{i:"🤝",t:"Synonyms",s:"كلمات بنفس المعنى",g:"syn"},{i:"⚡",t:"Opposites",s:"كلمات متضادة",g:"opp"},{i:"🐾",t:"Animals",s:"الحيوانات وأصواتها",h:"animals.html"},{i:"📅",t:"Days & Months",s:"الأيام والشهور والفصول",h:"dates.html"}]},
 {t:"Level 3 🌳 Talkers",a:"الصف الرابع",c:"#8e44ad",p:[{i:"💬",t:"Conversations",s:"20 محادثة",h:"talk.html"},{i:"⭐",t:"Top Phrases",s:"أهم 20 عبارة",h:"phrases.html"},{i:"✏️",t:"Grammar",s:"قواعد مبسّطة"},{i:"📖",t:"Short Stories",s:"قصص قصيرة"}]},
 {t:"Level 4 🚀 Champions",a:"الصف الخامس وما فوق",c:"#e8707a",p:[{i:"🚀",t:"Irregular Verbs",s:"50 فعلًا شاذًا",g:"irr"},{i:"📚",t:"B1 Words",s:"195 كلمة",h:"words.html"}]},
 {t:"Final 🏆 Super Quiz",a:"اختبر كل ما تعلمته",c:"#12307a",p:[{i:"🏆",t:"Contest",s:"اختبار شامل + ألعاب نارية 🎆",h:"quiz.html"}]}];
-let tab="home",ac;
+let tab=["syn","opp","irr","con"].includes(location.hash.slice(1))?location.hash.slice(1):"home",ac;
 function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;u.pitch=1.25;speechSynthesis.speak(u)}catch(e){}}
 function sfx(f,d=.15){if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state=="suspended")ac.resume();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type="triangle";g.gain.setValueAtTime(.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}
 function render(){
 const m=document.getElementById("main");
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t==tab));
 document.getElementById("hd").style.display=tab=="home"?"":"none";
-if(tab=="home"){m.innerHTML=`<div class="ban">My English Journey 🗺️</div><p>ابدأ من المستوى الأول وكمّل خطوة خطوة!</p><button class="say" data-say="1">🔊 Welcome!</button>${LV.map(L=>`<div class="lv"><div class="lh" style="background:${L.c}">${L.t}<small>${L.a}</small></div><div class="home">${L.p.map((p,k)=>`<div class="hc" ${p.h?`data-href="${p.h}"`:p.g?`data-go="${p.g}"`:'data-soon="1"'} style="background:${L.c};${p.h||p.g?"":"opacity:.5;"}animation-delay:${k*.08}s,${k*.3}s"><span class="ic">${p.i}</span><b>${p.t}</b><small>${p.h||p.g?p.s:"🔒 قريباً"}</small></div>`).join("")}</div></div>`).join("")}`;return}
+if(tab=="home"){m.innerHTML=`<div class="journey-intro"><div class="ban">My English Journey 🗺️</div><p>ابدأ من المستوى الأول وكمّل خطوة خطوة!</p><button class="say" data-say="1">🔊 Welcome!</button></div><div class="home curriculum-entry"><button type="button" class="hc c5" data-href="curriculum.html" style="background:#c0392b"><span class="ic">🇯🇴</span><b>المنهاج الأردني</b><small>الصف الأول ← السادس • الفصول</small></button></div><div class="learning-path">${LV.map(L=>`<div class="lv"><div class="lh" style="background:${L.c}">${L.t}<small>${L.a}</small></div><div class="home">${L.p.map((p,k)=>`<button type="button" class="hc" ${p.h?`data-href="${p.h}"`:p.g?`data-go="${p.g}"`:'data-soon="1"'} style="background:${L.c};${p.w?"grid-column:1/-1;":""}${p.h||p.g?"":"opacity:.5;"}animation-delay:${k*.08}s,${k*.3}s"><span class="ic">${p.i}</span><b>${p.t}</b><small>${p.h||p.g?p.s:"🔒 قريباً"}</small></button>`).join("")}</div></div>`).join("")}</div>`;return}
 if(tab=="con"){startQuiz();return}
 let h=`<div class="ban ${tab=="opp"?"pk":""}">${names[tab]}</div><p>${ar[tab]}</p><button class="say" data-say="intro">🔊 Explain it to me!</button><div class="grid">`;
 if(tab=="irr"){h=h.replace('<div class="grid">','<div class="stage" id="stage"><span>👆 Tap a verb! اكبس على فعل</span></div><div class="vg">');h+=verbs.map((v,i)=>`<button class="vc" data-i="${i}" style="--d:${i*.03}s">${v[0]}<small>${v[3]}</small></button>`).join("")}
@@ -190,3 +190,5 @@ imgs.forEach((im,i)=>{if(o[i]&&o[i].getAttribute("src"))im.src=o[i].getAttribute
 go(0,0,1);
 render();
 </script></body></html>
+
+
