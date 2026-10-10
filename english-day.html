@@ -82,7 +82,7 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 .hand{position:absolute;left:90px;top:2px;font-size:1.5rem;font-style:normal;opacity:0;transform-origin:20% 90%}
 .sl.on .hand{opacity:1;animation:hw .6s ease-in-out infinite alternate}
 @keyframes hw{from{transform:rotate(-22deg)}to{transform:rotate(28deg)}}
-</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="verb-flip.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <header id="hd"><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>International English Language Day 🏆</h1>
 <p class="sub">Small steps. Real conversations.</p>
@@ -117,14 +117,13 @@ document.getElementById("hd").style.display=tab=="home"?"":"none";
 if(tab=="home"){m.innerHTML=`<div class="journey-intro"><div class="ban">Choose Your Level 🗺️</div><p dir="rtl">اختر مستواك أولاً، ثم ادخل إلى دروسه بالترتيب.</p></div><div class="portal-grid">${LV.slice(0,4).map((L,i)=>`<a class="portal-card" href="levels.html?level=${i+1}"><span class="step">المستوى ${i+1}</span><strong>${L.t}</strong><small dir="rtl">${L.a}</small></a>`).join("")}</div><div class="portal-links"><a href="vocabulary.html">📚 ركن الكلمات والأفعال</a><a href="games.html">🎮 ساحة الألعاب</a><a href="quiz.html">🏆 اختبار المراجعة</a></div>`;return}
 if(tab=="con"){startQuiz();return}
 let h=`<div class="ban ${tab=="opp"?"pk":""}">${names[tab]}</div><p>${ar[tab]}</p><button class="say" data-say="intro">🔊 Explain it to me!</button><div class="grid">`;
-if(tab=="irr"){h=h.replace('<div class="grid">','<div class="stage" id="stage"><span>👆 Tap a verb! اكبس على فعل</span></div><div class="vg">');h+=verbs.map((v,i)=>`<button class="vc" data-i="${i}" style="--d:${i*.03}s">${v[0]}<small>${v[3]}</small></button>`).join("")}
-else{const d=tab=="syn"?syn:opp;h+=d.map((p,i)=>`<div class="fl ${tab=="opp"?"o":""}" data-i="${i}" style="animation-delay:${i*.07}s"><div class="in"><div class="fa"><b>${p[0]}</b><span class="ar">${p[1]}</span></div><div class="fb"><b>${p[2]}</b><span class="ar">${p[3]}</span></div></div></div>`).join("")}
+if(tab=="irr"){h=h.replace('<div class="grid">','<p class="verb-tip" dir="rtl">اضغط على البطاقة لتقلبها وتسمع الصيغ الثلاث. اضغط مجددًا للرجوع.</p><div class="verb-grid">');h+=verbs.map((v,i)=>`<button type="button" class="verb-card vc" data-i="${i}" aria-pressed="false" aria-label="${v[0]} — ${v[3]}: reveal three forms"><span class="verb-inner"><span class="verb-front"><span class="verb-icon" aria-hidden="true">🚀</span><b>${v[0]}</b><span dir="rtl">${v[3]}</span><small>Tap to flip · اضغط واقلب</small></span><span class="verb-back" aria-hidden="true"><span class="verb-form"><small>Base · الأصل</small><b>${v[0]}</b></span><span class="verb-form"><small>Past · الماضي</small><b>${v[1]}</b></span><span class="verb-form"><small>Participle · اسم المفعول</small><b>${v[2]}</b></span><span class="verb-audio">🔊 اضغط للرجوع</span></span></span></button>`).join("")}else{const d=tab=="syn"?syn:opp;h+=d.map((p,i)=>`<div class="fl ${tab=="opp"?"o":""}" data-i="${i}" style="animation-delay:${i*.07}s"><div class="in"><div class="fa"><b>${p[0]}</b><span class="ar">${p[1]}</span></div><div class="fb"><b>${p[2]}</b><span class="ar">${p[3]}</span></div></div></div>`).join("")}
 m.innerHTML=h+"</div>";}
 document.getElementById("main").onclick=e=>{
 const hr=e.target.closest("[data-href]");if(hr){location.href=hr.dataset.href;return}
 const so=e.target.closest("[data-soon]");if(so){say("Coming soon!");return}
 const g=e.target.closest("[data-go]");if(g){tab=g.dataset.go;render();window.scrollTo(0,0);say(tab=="con"?"Contest time!":intro[tab].split("!")[0]+"!");return}
-const vc=e.target.closest(".vc");if(vc){vc.classList.remove("tap");void vc.offsetWidth;vc.classList.add("tap","seen");typeWords(verbs[+vc.dataset.i]);return}
+const vc=e.target.closest(".vc");if(vc){const flipped=vc.classList.toggle("flipped");vc.setAttribute("aria-pressed",String(flipped));vc.querySelector(".verb-front").setAttribute("aria-hidden",String(flipped));vc.querySelector(".verb-back").setAttribute("aria-hidden",String(!flipped));const v=verbs[+vc.dataset.i];vc.setAttribute("aria-label",flipped?`${v[0]}, ${v[1]}, ${v[2]}. Tap to return`:`${v[0]} — ${v[3]}: reveal three forms`);say(flipped?`${v[0]}... ${v[1].replaceAll("/"," or ")}... ${v[2].replaceAll("/"," or ")}`:v[0]);return}
 const s=e.target.closest("[data-say]");if(s){say(intro[tab]);return}
 const c=e.target.closest(".fl");if(!c)return;c.classList.toggle("f");sfx(520,.1);
 const i=+c.dataset.i;
@@ -185,6 +184,9 @@ imgs.forEach((im,i)=>{if(o[i]&&o[i].getAttribute("src"))im.src=o[i].getAttribute
 go(0,0,1);
 render();
 </script><script src="kids.js"></script></body></html>
+
+
+
 
 
 
