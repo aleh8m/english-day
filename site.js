@@ -5,8 +5,8 @@ const PG=[],P=(id,f,t,ar,lv,sk,ty,goal,soon)=>PG.push({id,f,t,ar,lv,sk:sk.split(
 P("abc","alphabet.html","ABC Letters","الحروف الإنجليزية",1,"reading","Lesson","Know the 26 letters and their sounds");
 P("spell","alphabet.html#spell","Spelling","التهجئة",1,"writing","Practice","Spell simple words from pictures");
 P("animals","animals.html","Animals","الحيوانات",1,"vocabulary,listening","Lesson","Name 36 animals and their sounds");
-P("numbers","numbers.html","Numbers 1–20","الأرقام",1,"vocabulary","Lesson","",1);
-P("colors","colors.html","Colors","الألوان",1,"vocabulary","Lesson","",1);
+P("numbers","basics.html#numbers","Numbers 1–20","الأرقام",1,"vocabulary","Lesson","",1);
+P("colors","basics.html#colors","Colors","الألوان",1,"vocabulary","Lesson","",1);
 P("dates","dates.html","Days, Months & Seasons","الأيام والشهور والفصول",2,"vocabulary","Lesson","Say the days, months and seasons");
 P("syn","english-day.html#syn","Synonyms","كلمات متشابهة",2,"vocabulary","Lesson","Use words with the same meaning");
 P("opp","english-day.html#opp","Opposites","كلمات متضادة",2,"vocabulary","Lesson","Use opposite words");

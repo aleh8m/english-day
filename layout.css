@@ -1,6 +1,6 @@
 /* A calm, responsive learning path shared by the two entry pages. */
 :root{--bg:#f4f7fc;--card:#fff;--tx:#172e50;--bl:#2459b5;--sky:#e8effb;--pk:#b94763}
-body{font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--tx);text-align:center;font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.55}
 header{padding:36px 20px 24px;background:linear-gradient(135deg,#e5efff,#eef9f6);border-bottom:1px solid #dbe5f2}
 h1{background:none;transform:none;font-size:clamp(1.5rem,4vw,2.5rem);letter-spacing:-.04em;line-height:1.2;margin:0 0 10px;padding:0;color:#173763}
 .sub{font-size:1rem;color:#49617c;margin:0 0 16px}
@@ -22,3 +22,4 @@ footer{margin:0;padding:24px;background:#173763;font-weight:500}button:focus-vis
 @media(max-width:700px){header{padding:26px 16px 20px}main{padding:18px 14px 32px}nav{padding:10px 14px}.learning-path{grid-template-columns:1fr;gap:16px}.lv{padding:16px}.ban{font-size:1.4rem}.hc{padding:13px}.lv:last-child{grid-column:auto}}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101d30;--card:#192b43;--tx:#edf4ff;--sky:#243e61}header{background:#192b43}h1,.nm{color:#edf4ff}.sub,.ph{color:#b5c6de}.hc{background:#213651!important;color:#edf4ff}.hc small,.lh small,.journey-intro p{color:#b5c6de}.hc:hover{background:#2c486d!important}.curriculum-entry .hc{background:#213e63!important}.lv:last-child .hc{background:#4b3d20!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
