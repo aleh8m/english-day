@@ -35,7 +35,7 @@ nav button.on{background:var(--yl);color:#12307a;transform:scale(1.08)}
 .ar{font-size:.95rem;color:#a02a35;font-weight:bold}
 .ex{font-size:.72rem;font-style:italic}
 footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:bold}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>B1 Words 📚</h1>
 <p class="sub">Tap a card to flip it! اكبس على البطاقة</p></header>
@@ -269,4 +269,5 @@ document.getElementById("spk").onclick=()=>say(sets[cur].map(x=>x[0]).join(". ")
 sets.forEach((_,i)=>{const b=document.createElement("button");b.textContent="Set "+(i+1);b.onclick=()=>show(i);setsEl.appendChild(b)});
 show(0);
 </script>
-</body></html>
+<script src="kids.js"></script></body></html>
+

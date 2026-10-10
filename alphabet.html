@@ -50,7 +50,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 #fx{position:fixed;inset:0;pointer-events:none;z-index:50}
 #pr{position:fixed;left:50%;top:35%;transform:translate(-50%,-50%);z-index:60;font-size:2rem;font-weight:bold;color:#fff;text-shadow:0 3px 0 #1e4fa8;pointer-events:none;opacity:0}
 #pr.on{animation:boom 1.4s}@keyframes boom{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}30%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-90%)}}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <canvas id="fx"></canvas><div id="pr"></div>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>ABC &amp; Spelling 🔤</h1><p class="sub">Level 1 🌱 — تعلّم الحروف والتهجئة</p></header>
@@ -107,4 +107,5 @@ document.getElementById("ht").onclick=()=>{const b=tl.find(x=>!x.classList.conta
 document.getElementById("hr").onclick=()=>say(l[1]);say(l[1])}
 tb.forEach(b=>b.onclick=()=>tab(b.dataset.t));
 tab(location.hash=="#spell"?"s":"l");
-</script></body></html>
+</script><script src="kids.js"></script></body></html>
+
