@@ -82,15 +82,8 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 .hand{position:absolute;left:90px;top:2px;font-size:1.5rem;font-style:normal;opacity:0;transform-origin:20% 90%}
 .sl.on .hand{opacity:1;animation:hw .6s ease-in-out infinite alternate}
 @keyframes hw{from{transform:rotate(-22deg)}to{transform:rotate(28deg)}}
-</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="verb-flip.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
-<header id="hd"><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
-<h1>International English Language Day 🏆</h1>
-<p class="sub">Small steps. Real conversations.</p>
-<div class="car" id="car"><div class="trk" id="trk">
-<div class="sl" data-say="You are a Superstar!"><i class="hand">👋</i><div class="av"><img alt="Nassar"><i class="sp s1">✨</i><i class="sp s2">⭐</i><i class="sp s3">✨</i></div><b class="nm">Nassar</b><div class="ph">You are a Superstar! ⭐</div></div>
-<div class="sl" data-say="Never give up!"><i class="hand">👋</i><div class="av"><img alt="Rayyan"><i class="sp s1">✨</i><i class="sp s2">⭐</i><i class="sp s3">✨</i></div><b class="nm">Rayyan</b><div class="ph">Never give up! 💪</div></div>
-<div class="sl" data-say="Keep learning, keep shining!"><i class="hand">👋</i><div class="av"><img alt="Jad"><i class="sp s1">✨</i><i class="sp s2">⭐</i><i class="sp s3">✨</i></div><b class="nm">Jad</b><div class="ph">Keep learning, keep shining! ✨</div></div>
-</div><div class="dots"><i class="on"></i><i></i><i></i></div></div></header>
+</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="verb-flip.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+<header id="hd" data-promo="true"><h1>English Adventure 🌟</h1><p class="sub">Learn • Play • Speak — تعلّم، العب، وتحدّث</p><div id="promo" class="promo" aria-label="اكتشف محتويات الموقع"></div></header>
 <nav id="nav" aria-label="Learning navigation"><button data-t="home">🏠 الرئيسية · المستويات</button><button data-href="vocabulary.html">📚 ركن الكلمات والأفعال</button></nav>
 <main id="main"></main>
 <footer>Practice ⭐ Learn ⭐ Improve</footer>
@@ -163,27 +156,10 @@ document.getElementById("mus").onclick=()=>{
 if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();
 on=!on;document.getElementById("mus").textContent=on?"🎶":"🔇";
 clearInterval(timer);if(on){ac.resume();timer=setInterval(()=>{sfx(notes[ni%notes.length],.35);if(ni%4==0)sfx(notes[ni%notes.length]/2,.5);ni++},320)}};
-/* carousel */
-let ci=0,lt=0,tx=0;
-function pop(){try{if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state=="suspended")ac.resume();const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.setValueAtTime(380,t);o.frequency.exponentialRampToValueAtTime(1100,t+.09);g.gain.setValueAtTime(.001,t);g.gain.exponentialRampToValueAtTime(.35,t+.01);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.18);setTimeout(()=>sfx(1500,.05),90)}catch(e){}}
-function go(n,sp,q){ci=(n+3)%3;document.getElementById("trk").style.transform=`translateX(${-ci*33.3333}%)`;
-document.querySelectorAll(".sl").forEach((e,i)=>e.classList.toggle("on",i==ci));
-document.querySelectorAll(".dots i").forEach((e,i)=>e.classList.toggle("on",i==ci));
-if(!q)pop();if(sp){lt=Date.now();const e=document.querySelectorAll(".sl")[ci];say(e.querySelector(".nm").textContent+"! "+e.dataset.say)}}
-const cr=document.getElementById("car");
-cr.ontouchstart=e=>{tx=e.touches[0].clientX};
-cr.ontouchend=e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>35)go(ci+(d<0?1:-1),1)};
-cr.onclick=()=>go(ci+1,1);
-setInterval(()=>{if(Date.now()-lt>6000&&tab=="home")go(ci+1)},4200);
-/* photos: loaded from your original page saved as photos.html */
-(function(){const imgs=[...document.querySelectorAll(".av img")];
-const fb=()=>imgs.forEach(i=>{if(!i.src)i.replaceWith("🧒")});
-fetch("photos.html").then(r=>r.text()).then(t=>{
-const d=new DOMParser().parseFromString(t,"text/html"),o=d.querySelectorAll(".av img");
-imgs.forEach((im,i)=>{if(o[i]&&o[i].getAttribute("src"))im.src=o[i].getAttribute("src")});fb()}).catch(fb)})();
-go(0,0,1);
+
 render();
-</script><script src="kids.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
+
 
 
 
