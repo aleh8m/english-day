@@ -61,7 +61,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 .chips{display:flex;gap:6px;overflow-x:auto;padding:6px 2px;justify-content:center;flex-wrap:wrap}.chips .go.on{background:var(--yl);color:#12307a}
 .em1{font-size:2.6rem}.big{font-size:3rem}#td{background:var(--card);border:3px solid var(--yl);border-radius:16px;padding:8px;margin:8px 0;font-weight:bold}
 .fl.sm{height:100px}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <canvas id="fx"></canvas><div id="pr"></div>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>Animals 🐾</h1><p class="sub">Level 2 🌿 — الحيوانات وأصواتها</p></header>
@@ -146,5 +146,5 @@ const tb=[...document.querySelectorAll("nav button")];
 function tab(t){tb.forEach(b=>b.classList.toggle("on",b.dataset.t==t));window.scrollTo(0,0);TABS[t]()}
 tb.forEach(b=>b.onclick=()=>tab(b.dataset.t));
 tab("learn");
-</script><script src="kids.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
 
