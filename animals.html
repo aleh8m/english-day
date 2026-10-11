@@ -61,7 +61,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 .chips{display:flex;gap:6px;overflow-x:auto;padding:6px 2px;justify-content:center;flex-wrap:wrap}.chips .go.on{background:var(--yl);color:#12307a}
 .em1{font-size:2.6rem}.big{font-size:3rem}#td{background:var(--card);border:3px solid var(--yl);border-radius:16px;padding:8px;margin:8px 0;font-weight:bold}
 .fl.sm{height:100px}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"><link rel="stylesheet" href="studio.css"></head><body><script src="art-library.js"></script><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <canvas id="fx"></canvas><div id="pr"></div>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>Animals 🐾</h1><p class="sub">Level 2 🌿 — الحيوانات وأصواتها</p></header>
@@ -72,7 +72,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 function say(t,r=.8){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=r;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
 let ac;function sfx(f,d=.2){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type="triangle";g.gain.setValueAtTime(.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
 const cv=document.getElementById("fx"),cx=cv.getContext("2d");let P=[],raf=0;cv.width=innerWidth;cv.height=innerHeight;
-function burst(){const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
+function burst(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
 function fr(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>.02);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.l-=.014;cx.globalAlpha=p.l;cx.fillStyle=`hsl(${p.h},100%,60%)`;cx.beginPath();cx.arc(p.x,p.y,3,0,7);cx.fill()});P.length?raf=requestAnimationFrame(fr):(raf=0,cx.clearRect(0,0,cv.width,cv.height))}
 function party(t){const p=document.getElementById("pr");p.textContent=t;p.classList.remove("on");void p.offsetWidth;p.classList.add("on");for(let k=0;k<4;k++)setTimeout(()=>{burst();sfx(300+k*150)},k*250)}
 const m=document.getElementById("m");
@@ -82,10 +82,10 @@ const opts=(ans,pool)=>sh(sh([...new Set(pool.filter(x=>x!==ans))]).slice(0,3).c
 function quiz(gen){const N=10,qs=[],used=new Set();let i=0,sc=0,t=0;
 while(qs.length<N&&t++<400){const q=gen(),k=q.q+(q.big||"");if(!used.has(k)){used.add(k);qs.push(q)}}
 function ask(){const q=qs[i];let done=0;
-m.innerHTML=`<div class="top"><span>Question ${i+1}/${N}</span><span>⭐ ${sc}</span></div><div class="bar"><i style="width:${i*10}%"></i></div><div id="qc">${q.big?`<div class="big">${q.big}</div>`:""}<div class="q">${q.q}</div>${q.qa?`<div class="qa">${q.qa}</div>`:""}<div>${q.o.map(x=>`<button class="opt" dir="auto">${x}</button>`).join("")}</div><div id="fb"></div></div>`;
+m.innerHTML=`<div class="top"><span>Question ${i+1}/${N}</span><span>⭐ ${sc}</span></div><div class="bar"><i style="width:${i*10}%"></i></div><div id="qc">${q.big?`<div class="big">${q.big}</div>`:""}<div class="q">${q.q}</div>${q.qa?`<div class="qa">${q.qa}</div>`:""}<div>${q.o.map(x=>`<button class="opt" dir="auto" data-answer="${x}" aria-label="${A.find(a=>a[1]===x)?.[2]||x}">${A.find(a=>a[1]===x)?Art.icon(A.find(a=>a[1]===x)[2]):x}</button>`).join("")}</div><div id="fb"></div></div>`;
 setTimeout(()=>document.querySelector(".bar i").style.width=(i*10+3)+"%",50);if(q.say)say(q.say,.8);
-m.onclick=e=>{const b=e.target.closest(".opt");if(!b||done)return;done=1;const ok=b.textContent===q.ans;
-document.querySelectorAll(".opt").forEach(x=>{if(x.textContent===q.ans)x.classList.add("ok")});
+m.onclick=e=>{const b=e.target.closest(".opt");if(!b||done)return;done=1;const ok=b.dataset.answer===q.ans;
+document.querySelectorAll(".opt").forEach(x=>{if(x.dataset.answer===q.ans)x.classList.add("ok")});
 const fb=document.getElementById("fb");
 if(ok){sc++;party(["Amazing! 🌟","Super! 🎉","Fantastic! 🏆","You rock! 🚀"][i%4]);fb.innerHTML="<b>🎉 أحسنت!</b>"}
 else{b.classList.add("no");sfx(180,.3);fb.innerHTML="<b>Good try! 💪 حاول مرة ثانية</b>"}
@@ -134,17 +134,17 @@ air|🦋|Butterfly|فراشة|
 air|🐜|Ant|نملة|`;
 const A=RAW.split("\n").map(x=>x.split("|")),CT={all:"⭐ All",farm:"🚜 Farm",pet:"🏠 Pets",wild:"🦁 Wild",sea:"🌊 Sea",air:"🦅 Sky & Bugs"};let cat="all";
 const TABS={learn(){const L=A.filter(a=>cat=="all"||a[0]==cat);
-m.innerHTML=`<div class="ban">🐾 Animals</div><p>خمّن الحيوان ثم اكبس لتنقلب البطاقة وتسمع اسمه وصوته 👆</p><div class="chips">${Object.keys(CT).map(k=>`<button class="go ${k==cat?"on":""}" data-c="${k}">${CT[k]}</button>`).join("")}</div><div class="grid">${L.map((a,i)=>`<div class="fl" data-i="${i}" style="animation-delay:${i*.03}s"><div class="in"><div class="fa"><span class="big">${a[1]}</span></div><div class="fb"><b>${a[2]}</b><span class="ar">${a[3]}</span>${a[4]?`<small>🔊 ${a[4]}</small>`:""}</div></div></div>`).join("")}</div>`;
+m.innerHTML=`<div class="ban">🐾 Animals</div><p>خمّن الحيوان ثم اكبس لتنقلب البطاقة وتسمع اسمه وصوته 👆</p><div class="chips">${Object.keys(CT).map(k=>`<button class="go ${k==cat?"on":""}" data-c="${k}">${CT[k]}</button>`).join("")}</div><div class="grid">${L.map((a,i)=>`<div class="fl" data-i="${i}" style="animation-delay:${i*.03}s"><div class="in"><div class="fa"><span class="big">${Art.icon(a[2])}</span></div><div class="fb"><b>${a[2]}</b><span class="ar">${a[3]}</span>${a[4]?`<small>🔊 ${a[4]}</small>`:""}</div></div></div>`).join("")}</div>`;
 m.onclick=e=>{const c=e.target.closest("[data-c]");if(c){cat=c.dataset.c;TABS.learn();return}const f=e.target.closest(".fl");if(!f)return;f.classList.toggle("f");const a=L[+f.dataset.i];say(f.classList.contains("f")?(a[4]?`${a[2]}. The ${a[2]} says ${a[4]}`:a[2]):a[2],.8)}},
 game(){m.onclick=null;quiz(G)}};
 function G(){const a=pick(A),t=Math.random(),tip=`${a[1]} ${a[2]} = ${a[3]}`+(a[4]?` — ${a[4]}`:"");
 if(a[4]&&t<.3)return{q:`Which animal says “${a[4]}”?`,qa:"أي حيوان يصدر هذا الصوت؟",big:"🔊",say:a[4],ans:a[2],o:opts(a[2],A.map(x=>x[2])),tip};
-if(t<.65)return{q:"What animal is this?",qa:"ما اسم هذا الحيوان؟",big:a[1],ans:a[2],o:opts(a[2],A.map(x=>x[2])),tip};
+if(t<.65)return{q:"What animal is this?",qa:"ما اسم هذا الحيوان؟",big:Art.icon(a[2]),ans:a[2],o:opts(a[2],A.map(x=>x[2])),tip};
 return{q:`Find the “${a[2]}”`,qa:`أين ${a[3]}؟`,say:a[2],ans:a[1],o:opts(a[1],A.map(x=>x[1])),tip}}
 
 const tb=[...document.querySelectorAll("nav button")];
 function tab(t){tb.forEach(b=>b.classList.toggle("on",b.dataset.t==t));window.scrollTo(0,0);TABS[t]()}
 tb.forEach(b=>b.onclick=()=>tab(b.dataset.t));
 tab("learn");
-</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script><script src="studio.js"></script></body></html>
 

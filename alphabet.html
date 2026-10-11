@@ -50,7 +50,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 #fx{position:fixed;inset:0;pointer-events:none;z-index:50}
 #pr{position:fixed;left:50%;top:35%;transform:translate(-50%,-50%);z-index:60;font-size:2rem;font-weight:bold;color:#fff;text-shadow:0 3px 0 #1e4fa8;pointer-events:none;opacity:0}
 #pr.on{animation:boom 1.4s}@keyframes boom{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}30%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-90%)}}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"><link rel="stylesheet" href="studio.css"></head><body><script src="art-library.js"></script><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <canvas id="fx"></canvas><div id="pr"></div>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>ABC &amp; Spelling 🔤</h1><p class="sub">Level 1 🌱 — تعلّم الحروف والتهجئة</p></header>
@@ -88,18 +88,18 @@ const L=RAW.split("\n").map(x=>x.split("|"));
 function say(t,r=.8){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=r;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
 let ac;function sfx(f,d=.2){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type="triangle";g.gain.setValueAtTime(.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
 const cv=document.getElementById("fx"),cx=cv.getContext("2d");let P=[],raf=0;cv.width=innerWidth;cv.height=innerHeight;
-function burst(){const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
+function burst(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
 function fr(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>.02);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.l-=.014;cx.globalAlpha=p.l;cx.fillStyle=`hsl(${p.h},100%,60%)`;cx.beginPath();cx.arc(p.x,p.y,3,0,7);cx.fill()});P.length?raf=requestAnimationFrame(fr):(raf=0,cx.clearRect(0,0,cv.width,cv.height))}
 function party(t){const p=document.getElementById("pr");p.textContent=t;p.classList.remove("on");void p.offsetWidth;p.classList.add("on");for(let k=0;k<4;k++)setTimeout(()=>{burst();sfx(300+k*150)},k*250)}
 const m=document.getElementById("m"),tb=[...document.querySelectorAll("nav button")];
 function tab(t){tb.forEach(b=>b.classList.toggle("on",b.dataset.t==t));t=="s"?spell():letters()}
-function letters(){m.innerHTML=`<div class="ban">🔤 ABC Letters</div><p>اكبس على الحرف لتسمعه وتشوف الكلمة 👆</p><div class="grid">${L.map((l,i)=>`<div class="fl" data-i="${i}" style="animation-delay:${i*.03}s"><div class="in"><div class="fa"><span class="lt">${l[0]}<small>${l[0].toLowerCase()}</small></span></div><div class="fb"><span class="em">${l[2]}</span><b>${l[1]}</b><span class="ar">${l[3]}</span></div></div></div>`).join("")}</div>`;
+function letters(){m.innerHTML=`<div class="ban">🔤 ABC Letters</div><p>اكبس على الحرف لتسمعه وتشوف الكلمة 👆</p><div class="grid">${L.map((l,i)=>`<div class="fl" data-i="${i}" style="animation-delay:${i*.03}s"><div class="in"><div class="fa"><span class="lt">${l[0]}<small>${l[0].toLowerCase()}</small></span></div><div class="fb"><span class="em">${Art.icon(l[1])}</span><b>${l[1]}</b><span class="ar">${l[3]}</span></div></div></div>`).join("")}</div>`;
 m.onclick=e=>{const c=e.target.closest(".fl");if(!c)return;c.classList.toggle("f");const l=L[+c.dataset.i];say(c.classList.contains("f")?`${l[0]}. ${l[0]} for ${l[1]}`:l[0])}}
 let sw=[],si=0,w,got;
 function spell(){sw=L.filter(l=>!l[1].includes(" ")&&l[1].length<=7&&!l[1].includes("-")).sort(()=>Math.random()-.5);si=0;nextS()}
 function nextS(){const l=sw[si%sw.length];w=l[1].toUpperCase();got=0;
 const t=[...w].map((c,i)=>[c,i]).sort(()=>Math.random()-.5);
-m.innerHTML=`<div class="ban">✍️ Spelling</div><div id="sp"><div class="pic">${l[2]}</div><div><b>${l[3]}</b></div><button class="go" id="hr">🔊 Listen</button><div class="slots">${[...w].map(()=>'<div class="slot"></div>').join("")}</div><div class="tiles">${t.map(x=>`<button class="tile" data-c="${x[0]}">${x[0]}</button>`).join("")}</div><button class="go" id="ht" style="background:var(--pk)">💡 Hint</button><div id="nw"></div></div>`;
+m.innerHTML=`<div class="ban">✍️ Spelling</div><div id="sp"><div class="pic">${Art.icon(l[1])}</div><div><b>${l[3]}</b></div><button class="go" id="hr">🔊 Listen</button><div class="slots">${[...w].map(()=>'<div class="slot"></div>').join("")}</div><div class="tiles">${t.map(x=>`<button class="tile" data-c="${x[0]}">${x[0]}</button>`).join("")}</div><button class="go" id="ht" style="background:var(--pk)">💡 Hint</button><div id="nw"></div></div>`;
 const sl=[...document.querySelectorAll(".slot")],tl=[...document.querySelectorAll(".tile")];
 const put=b=>{sl[got].textContent=w[got];b.classList.add("used");got++;sfx(500+got*60,.1);if(got==w.length){say(l[1]);party(["Amazing! 🌟","Super! 🎉","Great spelling! 🏆"][si%3]);document.getElementById("nw").innerHTML='<button class="go" id="nx">Next ➡️</button>';document.getElementById("nx").onclick=()=>{si++;nextS()}}};
 tl.forEach(b=>b.onclick=()=>{if(got>=w.length||b.classList.contains("used"))return;if(b.dataset.c==w[got])put(b);else{b.classList.remove("bad");void b.offsetWidth;b.classList.add("bad");sfx(180,.25)}});
@@ -107,5 +107,5 @@ document.getElementById("ht").onclick=()=>{const b=tl.find(x=>!x.classList.conta
 document.getElementById("hr").onclick=()=>say(l[1]);say(l[1])}
 tb.forEach(b=>b.onclick=()=>tab(b.dataset.t));
 tab(location.hash=="#spell"?"s":"l");
-</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script><script src="studio.js"></script></body></html>
 

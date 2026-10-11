@@ -82,10 +82,10 @@ nav{flex-wrap:nowrap;gap:4px;padding:8px 6px;overflow-x:auto}nav button{padding:
 .hand{position:absolute;left:90px;top:2px;font-size:1.5rem;font-style:normal;opacity:0;transform-origin:20% 90%}
 .sl.on .hand{opacity:1;animation:hw .6s ease-in-out infinite alternate}
 @keyframes hw{from{transform:rotate(-22deg)}to{transform:rotate(28deg)}}
-</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="verb-flip.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="verb-flip.css"><link rel="stylesheet" href="hero.css"><link rel="stylesheet" href="studio.css"></head><body><script src="art-library.js"></script><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <header id="hd" data-promo="true"><h1>English Adventure 🌟</h1><p class="sub">Learn • Play • Speak — تعلّم، العب، وتحدّث</p><div id="promo" class="promo" aria-label="اكتشف محتويات الموقع"></div></header>
 <nav id="nav" aria-label="Learning navigation"><button data-t="home">🏠 الرئيسية · المستويات</button><button data-href="vocabulary.html">📚 ركن الكلمات والأفعال</button></nav>
-<main id="main"></main>
+<main id="main"><section class="lesson" dir="rtl"><h2>المنهاج المدرسي</h2><p>الصفوف الستة والفصل الأول بألعابه الأصلية.</p><a class="promo-cta" href="curriculum.html">ادخل إلى المنهاج المدرسي ←</a></section></main>
 <footer>Practice ⭐ Learn ⭐ Improve</footer>
 <button id="mus" aria-label="music">🎵</button>
 <script>
@@ -158,7 +158,7 @@ on=!on;document.getElementById("mus").textContent=on?"🎶":"🔇";
 clearInterval(timer);if(on){ac.resume();timer=setInterval(()=>{sfx(notes[ni%notes.length],.35);if(ni%4==0)sfx(notes[ni%notes.length]/2,.5);ni++},320)}};
 
 render();
-</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script><script src="studio.js"></script></body></html>
 
 
 

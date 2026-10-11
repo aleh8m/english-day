@@ -61,7 +61,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 .chips{display:flex;gap:6px;overflow-x:auto;padding:6px 2px;justify-content:center;flex-wrap:wrap}.chips .go.on{background:var(--yl);color:#12307a}
 .em1{font-size:2.6rem}.big{font-size:3rem}#td{background:var(--card);border:3px solid var(--yl);border-radius:16px;padding:8px;margin:8px 0;font-weight:bold}
 .fl.sm{height:100px}
-</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"></head><body><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
+</style><link rel="stylesheet" href="play.css"><link rel="stylesheet" href="navigation.css"><link rel="stylesheet" href="kids.css"><link rel="stylesheet" href="hero.css"><link rel="stylesheet" href="studio.css"></head><body><script src="art-library.js"></script><a class="return-home" href="index.html">🏠 العودة للصفحة الرئيسية · Home</a>
 <canvas id="fx"></canvas><div id="pr"></div>
 <header><span class="cloud" style="top:8px">☁️</span><span class="cloud" style="top:50px;animation-delay:-9s">☁️</span>
 <h1>Days & Months 📅</h1><p class="sub">Level 2 🌿 — الأيام والشهور والفصول</p></header>
@@ -73,7 +73,7 @@ footer{background:var(--bl);color:#fff;padding:12px;margin-top:16px;font-weight:
 function say(t,r=.8){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=r;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
 let ac;function sfx(f,d=.2){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type="triangle";g.gain.setValueAtTime(.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
 const cv=document.getElementById("fx"),cx=cv.getContext("2d");let P=[],raf=0;cv.width=innerWidth;cv.height=innerHeight;
-function burst(){const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
+function burst(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const x=cv.width*(.2+Math.random()*.6),y=cv.height*(.15+Math.random()*.35),h=Math.random()*360;for(let k=0;k<44;k++){const a=6.28*k/44,s=2+Math.random()*4;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}if(!raf)raf=requestAnimationFrame(fr)}
 function fr(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>.02);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.l-=.014;cx.globalAlpha=p.l;cx.fillStyle=`hsl(${p.h},100%,60%)`;cx.beginPath();cx.arc(p.x,p.y,3,0,7);cx.fill()});P.length?raf=requestAnimationFrame(fr):(raf=0,cx.clearRect(0,0,cv.width,cv.height))}
 function party(t){const p=document.getElementById("pr");p.textContent=t;p.classList.remove("on");void p.offsetWidth;p.classList.add("on");for(let k=0;k<4;k++)setTimeout(()=>{burst();sfx(300+k*150)},k*250)}
 const m=document.getElementById("m");
@@ -129,5 +129,5 @@ const tb=[...document.querySelectorAll("nav button")];
 function tab(t){tb.forEach(b=>b.classList.toggle("on",b.dataset.t==t));window.scrollTo(0,0);TABS[t]()}
 tb.forEach(b=>b.onclick=()=>tab(b.dataset.t));
 tab("days");
-</script><script src="kids.js"></script><script src="hero.js"></script></body></html>
+</script><script src="kids.js"></script><script src="hero.js"></script><script src="studio.js"></script></body></html>
 
